@@ -22,7 +22,4 @@ function ask() {
     });
 }
 
-//ask();
-
-var result = calculator.calculate(5);
-display.display(result);
+ask();

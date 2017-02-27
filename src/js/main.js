@@ -110,7 +110,6 @@ function askSide() {
         }
         
         var calcMatrix = calculateFillMatrix(side);
-        //displayMatrix(calcMatrix);
         var finalMatrix = calculateFinal(calcMatrix, side);
         displayMatrix(finalMatrix);
         console.log("Sum: " + finalMatrix.sum);

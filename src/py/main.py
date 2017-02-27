@@ -24,3 +24,10 @@ if side % 2 == 0:
 
 result = MatrixCalculator.Calculate(side)
 ConsoleUtil.DisplayMatrixResult(result, side)
+
+'''
+To execute run in ths CLI:
+> py main.py
+or provide the side:
+> py main.py 11
+'''

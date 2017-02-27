@@ -40,6 +40,6 @@ function calculate() {
 /*
 To execute run in ths CLI:
 > node main
-or
+or provide the side:
 > node main 7
 */

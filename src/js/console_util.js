@@ -5,6 +5,18 @@ String.prototype.padLeft = function (length, character) {
 };
 
 module.exports = {
+    prompt: function (question, callback) {
+        var rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+
+        rl.question(question + "\n", function (input) {
+            rl.close();
+            if (callback)
+                callback(input);
+        });
+    },
     displayMatrixResult: function (result) {
         var matrix = result.matrix;
         var length = Math.max(Math.pow(result.side, 2).toString().length + 1, 2);
@@ -18,17 +30,5 @@ module.exports = {
         }
 
         console.log("Sum: " + result.sum);
-    },
-    prompt: function (question, callback) {
-        var rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
-
-        rl.question(question + "\n", function (input) {
-            rl.close();
-            if (callback)
-                callback(input);
-        });
     }
 };

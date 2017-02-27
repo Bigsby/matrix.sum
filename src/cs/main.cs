@@ -40,6 +40,6 @@ To compile rum:
 
 To execute run in ths CLI:
 > main
-or
+or provie the side:
 > main 5
 */

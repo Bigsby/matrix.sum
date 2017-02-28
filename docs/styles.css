@@ -47,6 +47,10 @@ table.result td.left{
     border-left: 2px solid black;
 }
 
+table.result td.inSquare{
+    background-color: lightgray;
+}
+
 .highlight_diagonal{
     background-color: lightgreen;
 }

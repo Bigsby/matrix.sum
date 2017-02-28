@@ -28,6 +28,7 @@ class Program {
             ErrorOut("Side needs to be an odd number!");
 
         var result = MatrixCalculator.Calculate(side);
+        WriteLine(result.Success ? "Matrix calculated successfully!" : "Error calculating matrix!!!");
         ConsoleUtil.DisplayMatrixResult(result);
 
         return 0;

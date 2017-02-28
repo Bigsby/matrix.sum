@@ -32,11 +32,45 @@ function currentHolder(row, column, side) {
     };
 };
 
+function testResult(matrix, expectedSum, side) {
+    for (var rowIndex = 0; rowIndex < side; rowIndex++) {
+        var sum = 0;
+        for (var columnIndex = 0; columnIndex < side; columnIndex++)
+            sum += matrix[rowIndex][columnIndex];
+        
+        if (sum != expectedSum)
+            return false;
+    }
+
+    for (var columnIndex = 0; columnIndex < side; columnIndex++) {
+        var sum = 0;
+        for (var rowIndex = 0; rowIndex < side; rowIndex++)
+            sum += matrix[rowIndex][columnIndex];
+        
+        if (sum != expectedSum)
+            return false;
+    }
+
+    var diagonalSum = 0;
+    for (var diagonalIndex = 0; diagonalIndex < side; diagonalIndex++)
+        diagonalSum += matrix[diagonalIndex][diagonalIndex];
+
+    if (diagonalSum != expectedSum)
+        return false;
+
+    diagonalSum = 0;
+    for (var diagonalIndex = 0; diagonalIndex < side; diagonalIndex++)
+        diagonalSum += matrix[diagonalIndex][side - diagonalIndex - 1];
+
+    return diagonalSum == expectedSum;
+}
+
 module.exports = {
     calculate: function (side) {
         if (side % 2 !== 1)
             throw new Error("Side needs to be an odd number.");
 
+        var expectedSum = side * (side * side + 1) / 2;
         var matrix = createEmptyMatrix(side);
         var current = new currentHolder(-(side - 1) / 2, Math.floor(side / 2), side);
 
@@ -53,8 +87,6 @@ module.exports = {
             }
         }
 
-        return new result(matrix, matrix[0].reduce(function (total, value) {
-            return total + value;
-        }, 0), side);
+        return new result(matrix, expectedSum, side, testResult(matrix, expectedSum, side));
     }
 }

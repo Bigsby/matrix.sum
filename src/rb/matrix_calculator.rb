@@ -66,6 +66,7 @@ class MatrixCalculator
             raise "Side needs to be an odd number."
         end
 
+        expectedSum = side * (side * side + 1) / 2
         matrix = CreateEmptyMatrix(side)
         current = CurrentHolder.new(-(side -1) / 2, (side / 2).floor, side)
 
@@ -84,11 +85,48 @@ class MatrixCalculator
             
         end
         
-        return MatrixResult.new(matrix, matrix[0].inject(:+), side)
+        return MatrixResult.new(matrix, expectedSum, side, TestResult(matrix, expectedSum, side))
     end
 
     private
     def self.CreateEmptyMatrix(side)
         return Array.new(side) { Array.new(side) }
+    end
+
+    def self.TestResult(matrix, expectedSum, side)
+        for rowIndex in 0..side - 1
+            sum = 0
+            for columnIndex in 0..side - 1
+                sum += matrix[rowIndex][columnIndex]
+            end
+            if sum != expectedSum
+                return false
+            end
+        end
+
+        for columnIndex in 0..side - 1
+            sum = 0
+            for rowIndex in 0..side - 1
+                sum += matrix[rowIndex][columnIndex]
+            end
+            if sum != expectedSum
+                return false
+            end
+        end
+        
+        diagonalSum = 0
+        for diagonalIndex in 0..side - 1
+            diagonalSum += matrix[diagonalIndex][diagonalIndex]
+        end
+        if diagonalSum != expectedSum
+            return false
+        end
+
+        diagonalSum = 0
+        for diagonalIndex in 0..side - 1
+            diagonalSum += matrix[diagonalIndex][side - diagonalIndex - 1]
+        end
+
+        diagonalSum == expectedSum
     end
 end

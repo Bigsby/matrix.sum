@@ -1,8 +1,9 @@
 class MatrixResult
-    def initialize(matrix, sum, side)
+    def initialize(matrix, sum, side, success)
         @matrix = matrix
         @sum = sum
         @side = side
+        @success = success
     end
 
     def matrix
@@ -17,4 +18,7 @@ class MatrixResult
         @side
     end
 
+    def success
+        @success
+    end
 end

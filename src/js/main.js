@@ -25,6 +25,9 @@ function calculate() {
         errorOut("Side needs to be an odd number!");
 
     var result = calculator.calculate(side);
+
+    console.log(result.success ? "Matrix calculated successfully!" : "Error calculating matrix!!!");
+
     console_util.displayMatrixResult(result);
 };
 

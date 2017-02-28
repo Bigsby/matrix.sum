@@ -23,6 +23,7 @@ if side % 2 == 0:
     ErroOut("Side needs to be an odd number!")
 
 result = MatrixCalculator.Calculate(side)
+print("Matrix calculated successfully!" if result.success else "Error calculating matrix!!!")
 ConsoleUtil.DisplayMatrixResult(result, side)
 
 '''

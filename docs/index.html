@@ -9,7 +9,7 @@
 
 <body>
     <div class="header">
-        Summing Matrices
+        <h1>Summing Matrices</h1>
     </div>
     <section class="content">
         <p>That I can remember, I've always liked numbers. The ways they behave and relate has always aroused my interest. While
@@ -20,206 +20,944 @@
         <p>
             Afther a little trial and error, the solution is easy to achieve:
         </p>
-        <table class="result">
+        <table class="result outline">
             <tr>
-                <td>2</td>
-                <td>9</td>
                 <td>4</td>
+                <td>9</td>
+                <td>2</td>
             </tr>
             <tr>
-                <td>7</td>
-                <td>5</td>
                 <td>3</td>
+                <td>5</td>
+                <td>7</td>
             </tr>
             <tr>
-                <td>6</td>
-                <td>1</td>
                 <td>8</td>
+                <td>1</td>
+                <td>6</td>
             </tr>
         </table>
         <p>And the sum of the numbers on every row column and both diagonals is <b>15</b>.</p>
-        <p>And, as usual, solving just the problem at hand isn't enough. I embarked in the taks of trying to solve the same
+        <p>And, as usual, solving just the problem at hand isn't enough. I embarked in the task of trying to solve the same
             problem for a 5 by 5 square. After a little bit more trial and error than the first time, the solution presented
             itself:
         </p>
-        <table class="result">
+        <table class="result outline">
             <tr>
-                <td>3</td>
-                <td>20</td>
-                <td>7</td>
-                <td>24</td>
                 <td>11</td>
+                <td>24</td>
+                <td>7</td>
+                <td>20</td>
+                <td>3</td>
             </tr>
             <tr>
-                <td>16</td>
-                <td>8</td>
-                <td>25</td>
-                <td>12</td>
                 <td>4</td>
+                <td>12</td>
+                <td>25</td>
+                <td>8</td>
+                <td>16</td>
             </tr>
             <tr>
-                <td>9</td>
-                <td>21</td>
-                <td>13</td>
-                <td>5</td>
                 <td>17</td>
+                <td>5</td>
+                <td>13</td>
+                <td>21</td>
+                <td>9</td>
             </tr>
             <tr>
-                <td>22</td>
-                <td>14</td>
-                <td>1</td>
-                <td>18</td>
                 <td>10</td>
+                <td>18</td>
+                <td>1</td>
+                <td>14</td>
+                <td>22</td>
             </tr>
             <tr>
-                <td>15</td>
-                <td>2</td>
-                <td>19</td>
-                <td>6</td>
                 <td>23</td>
+                <td>6</td>
+                <td>19</td>
+                <td>2</td>
+                <td>15</td>
             </tr>
         </table>
         <p>Where the sum of the numbers on every row column and both diagonals is <b>65</b>.</p>
         <p>At this point, I thought it must be likely that all odd-sided squares have a similar solution and, consequently,
             there must be a generic way to solve this problem for all. And, following that conviction, I started looking
             for patterns and some stand out with the "naked eye".</p>
-        <table class="result">
+        <table class="result outline">
             <tr>
-                <td>2</td>
-                <td class="highlight_first_last">9</td>
                 <td class="highlight_diagonal">4</td>
+                <td class="highlight_first_last">9</td>
+                <td>2</td>
             </tr>
             <tr>
-                <td>7</td>
-                <td class="highlight_medium">5</td>
                 <td>3</td>
+                <td class="highlight_medium">5</td>
+                <td>7</td>
             </tr>
             <tr>
-                <td class="highlight_diagonal">6</td>
-                <td class="highlight_first_last">1</td>
                 <td>8</td>
+                <td class="highlight_first_last">1</td>
+                <td class="highlight_diagonal">6</td>
             </tr>
         </table>
-        <table class="result">
+        <table class="result outline">
             <tr>
-                <td>3</td>
-                <td>20</td>
-                <td>7</td>
-                <td>24</td>
                 <td class="highlight_diagonal">11</td>
+                <td>24</td>
+                <td>7</td>
+                <td>20</td>
+                <td>3</td>
             </tr>
             <tr>
-                <td>16</td>
-                <td>8</td>
-                <td class="highlight_first_last">25</td>
-                <td class="highlight_diagonal">12</td>
                 <td>4</td>
+                <td class="highlight_diagonal">12</td>
+                <td class="highlight_first_last">25</td>
+                <td>8</td>
+                <td>16</td>
             </tr>
             <tr>
-                <td>9</td>
-                <td>21</td>
-                <td class="highlight_medium">13</td>
-                <td>5</td>
                 <td>17</td>
+                <td>5</td>
+                <td class="highlight_medium">13</td>
+                <td>21</td>
+                <td>9</td>
             </tr>
             <tr>
-                <td>22</td>
-                <td class="highlight_diagonal">14</td>
-                <td class="highlight_first_last">1</td>
-                <td>18</td>
                 <td>10</td>
+                <td>18</td>
+                <td class="highlight_first_last">1</td>
+                <td class="highlight_diagonal">14</td>
+                <td>22</td>
             </tr>
             <tr>
-                <td class="highlight_diagonal">15</td>
-                <td>2</td>
-                <td>19</td>
-                <td>6</td>
                 <td>23</td>
+                <td>6</td>
+                <td>19</td>
+                <td>2</td>
+                <td class="highlight_diagonal">15</td>
             </tr>
         </table>
         <ul>
             <li>In the middle of the square goes medium (the middle nummber): <b>5</b> in 3x3; <b>13</b> in 5x5</li>
             <li>Bellow medium number goes the first number, i.e., <b>1</b></li>
             <li>Over medium number goes the last number: <b>9</b> in 3x3; <b>25</b> in 5x5</li>
-            <li>Top-right to bottom-left diagonal is in sequence, having the medium number, in the middle, which gives the most
+            <li>Top-left to bottom-right diagonal is in sequence, having the medium number, in the middle, which gives the most
                 important data to work with, i.e., the <b>sum value</b>:
                 <ul>
                     <li><b class="highlight_diagonal">4</b>, <b class="highlight_medium">5</b> and <b class="highlight_diagonal">6</b>in
                         3x3, summing <b>15</b>
                     </li>
                     <li><b class="highlight_diagonal">11</b>, <b class="highlight_diagonal">12</b>, <b class="highlight_medium">13</b>,
-                        <b class="highlight_diagonal">14</b> and <b class="highlight_diagonal">15</b> in 5x5 summing <b>65</b></li>
+                        <b class="highlight_diagonal">14</b> and <b class="highlight_diagonal">15</b> in 5x5, summing <b>65</b></li>
                 </ul>
             </li>
         </ul>
         <p>Having this starting point, I took the task of solving the 7 by 7 square.</p>
-        <table class="result">
+        <table class="result outline">
             <tr>
-                <td>4</td>
-                <td>35</td>
-                <td>10</td>
-                <td>41</td>
-                <td>16</td>
-                <td>47</td>
                 <td class="highlight_diagonal">22</td>
+                <td>47</td>
+                <td>16</td>
+                <td>41</td>
+                <td>10</td>
+                <td>35</td>
+                <td>4</td>
             </tr>
             <tr>
-                <td>29</td>
-                <td>11</td>
-                <td>42</td>
-                <td>17</td>
-                <td>48</td>
-                <td class="highlight_diagonal">23</td>
                 <td>5</td>
+                <td class="highlight_diagonal">23</td>
+                <td>48</td>
+                <td>17</td>
+                <td>42</td>
+                <td>11</td>
+                <td>29</td>
             </tr>
             <tr>
-                <td>12</td>
-                <td>36</td>
-                <td>18</td>
-                <td class="highlight_first_last">49</td>
-                <td class="highlight_diagonal">24</td>
-                <td>6</td>
                 <td>30</td>
+                <td>6</td>
+                <td class="highlight_diagonal">24</td>
+                <td class="highlight_first_last">49</td>
+                <td>18</td>
+                <td>36</td>
+                <td>12</td>
             </tr>
             <tr>
-                <td>37</td>
-                <td>19</td>
-                <td>43</td>
-                <td class="highlight_medium">25</td>
-                <td>7</td>
-                <td>31</td>
                 <td>13</td>
+                <td>31</td>
+                <td>7</td>
+                <td class="highlight_medium">25</td>
+                <td>43</td>
+                <td>19</td>
+                <td>37</td>
             </tr>
             <tr>
-                <td>20</td>
-                <td>44</td>
-                <td class="highlight_diagonal">26</td>
-                <td class="highlight_first_last">1</td>
-                <td>32</td>
-                <td>14</td>
                 <td>38</td>
+                <td>14</td>
+                <td>32</td>
+                <td class="highlight_first_last">1</td>
+                <td class="highlight_diagonal">26</td>
+                <td>44</td>
+                <td>20</td>
             </tr>
             <tr>
-                <td>45</td>
-                <td class="highlight_diagonal">27</td>
-                <td>2</td>
-                <td>33</td>
-                <td>8</td>
-                <td>39</td>
                 <td>21</td>
+                <td>39</td>
+                <td>8</td>
+                <td>33</td>
+                <td>2</td>
+                <td class="highlight_diagonal">27</td>
+                <td>45</td>
             </tr>
             <tr>
-                <td class="highlight_diagonal">28</td>
-                <td>3</td>
-                <td>34</td>
-                <td>9</td>
-                <td>40</td>
-                <td>15</td>
                 <td>46</td>
+                <td>15</td>
+                <td>40</td>
+                <td>9</td>
+                <td>34</td>
+                <td>3</td>
+                <td class="highlight_diagonal">28</td>
             </tr>
         </table>
         <p>Where the sum of the numbers on every row column and both diagonals is <b>175</b>.</p>
-        <p>Some more scrutiny and some more patterns become evident.</p>
+        <p>Some more scrutiny and some more patterns become evident, like the sequences of numbers in diagonals parallel to
+            the middle top-left to bottom-right:</p>
+        <table class="result outline">
+            <tr>
+                <td class="highlight_diagonal">22</td>
+                <td>47</td>
+                <td class="highlight_first_last">16</td>
+                <td>41</td>
+                <td class="highlight_medium">10</td>
+                <td>35</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td class="highlight_diagonal">23</td>
+                <td>48</td>
+                <td class="highlight_first_last">17</td>
+                <td>42</td>
+                <td class="highlight_medium">11</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td class="highlight_first_last">30</td>
+                <td>6</td>
+                <td class="highlight_diagonal">24</td>
+                <td>49</td>
+                <td class="highlight_first_last">18</td>
+                <td>36</td>
+                <td class="highlight_medium">12</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td class="highlight_first_last">31</td>
+                <td>7</td>
+                <td class="highlight_diagonal">25</td>
+                <td>43</td>
+                <td class="highlight_first_last">19</td>
+                <td>37</td>
+            </tr>
+            <tr>
+                <td class="highlight_medium">38</td>
+                <td>14</td>
+                <td class="highlight_first_last">32</td>
+                <td>1</td>
+                <td class="highlight_diagonal">26</td>
+                <td>44</td>
+                <td class="highlight_first_last">20</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td class="highlight_medium">39</td>
+                <td>8</td>
+                <td class="highlight_first_last">33</td>
+                <td>2</td>
+                <td class="highlight_diagonal">27</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td>46</td>
+                <td>15</td>
+                <td class="highlight_medium">40</td>
+                <td>9</td>
+                <td class="highlight_first_last">34</td>
+                <td>3</td>
+                <td class="highlight_diagonal">28</td>
+            </tr>
+        </table>
+        <p>Or the gap of the size of the side, in this case <b>7</b>, on the diagonals of the opposite direction:</p>
+        <table class="result outline">
+            <tr>
+                <td>22</td>
+                <td>47</td>
+                <td class="highlight_medium">16</td>
+                <td>41</td>
+                <td class="highlight_first_last">10</td>
+                <td>35</td>
+                <td class="highlight_diagonal">4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td class="highlight_medium">23</td>
+                <td>48</td>
+                <td class="highlight_first_last">17</td>
+                <td>42</td>
+                <td class="highlight_diagonal">11</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td class="highlight_medium">30</td>
+                <td>6</td>
+                <td class="highlight_first_last">24</td>
+                <td>49</td>
+                <td class="highlight_diagonal">18</td>
+                <td>36</td>
+                <td class="highlight_first_last">12</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td class="highlight_first_last">31</td>
+                <td>7</td>
+                <td class="highlight_diagonal">25</td>
+                <td>43</td>
+                <td class="highlight_first_last">19</td>
+                <td>37</td>
+            </tr>
+            <tr>
+                <td class="highlight_first_last">38</td>
+                <td>14</td>
+                <td class="highlight_diagonal">32</td>
+                <td>1</td>
+                <td class="highlight_first_last">26</td>
+                <td>44</td>
+                <td class="highlight_medium">20</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td class="highlight_diagonal">39</td>
+                <td>8</td>
+                <td class="highlight_first_last">33</td>
+                <td>2</td>
+                <td class="highlight_medium">27</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td class="highlight_diagonal">46</td>
+                <td>15</td>
+                <td class="highlight_first_last">40</td>
+                <td>9</td>
+                <td class="highlight_medium">34</td>
+                <td>3</td>
+                <td>28</td>
+            </tr>
+        </table>
+        <p>These got me trying out things like continuing these sequences outside the square it self and, eventually, got here:</p>
+        <table class="result">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>8</td>
+                <td></td>
+                <td>2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>15</td>
+                <td></td>
+                <td>9</td>
+                <td></td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="top left">22</td>
+                <td class="top">47</td>
+                <td class="top">16</td>
+                <td class="top">41</td>
+                <td class="top">10</td>
+                <td class="top">35</td>
+                <td class="top right">4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>29</td>
+                <td class="left">5</td>
+                <td>23</td>
+                <td>48</td>
+                <td>17</td>
+                <td>42</td>
+                <td>11</td>
+                <td class="right">29</td>
+                <td>5</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>36</td>
+                <td></td>
+                <td class="left">30</td>
+                <td>6</td>
+                <td>24</td>
+                <td>49</td>
+                <td>18</td>
+                <td>36</td>
+                <td class="right">12</td>
+                <td></td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>43</td>
+                <td></td>
+                <td>37</td>
+                <td class="left">13</td>
+                <td>31</td>
+                <td>7</td>
+                <td>25</td>
+                <td>43</td>
+                <td>19</td>
+                <td class="right">37</td>
+                <td>13</td>
+                <td></td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>44</td>
+                <td></td>
+                <td class="left">38</td>
+                <td>14</td>
+                <td>32</td>
+                <td>1</td>
+                <td>26</td>
+                <td>44</td>
+                <td class="right">20</td>
+                <td></td>
+                <td>14</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>45</td>
+                <td class="left">21</td>
+                <td>39</td>
+                <td>8</td>
+                <td>33</td>
+                <td>2</td>
+                <td>27</td>
+                <td class="right">45</td>
+                <td>21</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bottom left">46</td>
+                <td class="bottom">15</td>
+                <td class="bottom">40</td>
+                <td class="bottom">9</td>
+                <td class="bottom">34</td>
+                <td class="bottom">3</td>
+                <td class="bottom right">28</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>47</td>
+                <td></td>
+                <td>41</td>
+                <td></td>
+                <td>35</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>48</td>
+                <td></td>
+                <td>42</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>49</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <p>And, removing the clutter:</p>
+        <table class="result">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>8</td>
+                <td></td>
+                <td>2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>15</td>
+                <td></td>
+                <td>9</td>
+                <td></td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="top left">22</td>
+                <td class="top"></td>
+                <td class="top">16</td>
+                <td class="top"></td>
+                <td class="top">10</td>
+                <td class="top"></td>
+                <td class="top right">4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>29</td>
+                <td class="left"></td>
+                <td>23</td>
+                <td></td>
+                <td>17</td>
+                <td></td>
+                <td>11</td>
+                <td class="right"></td>
+                <td>5</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>36</td>
+                <td></td>
+                <td class="left">30</td>
+                <td></td>
+                <td>24</td>
+                <td></td>
+                <td>18</td>
+                <td></td>
+                <td class="right">12</td>
+                <td></td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>43</td>
+                <td></td>
+                <td>37</td>
+                <td class="left"></td>
+                <td>31</td>
+                <td></td>
+                <td>25</td>
+                <td></td>
+                <td>19</td>
+                <td class="right"></td>
+                <td>13</td>
+                <td></td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>44</td>
+                <td></td>
+                <td class="left">38</td>
+                <td></td>
+                <td>32</td>
+                <td></td>
+                <td>26</td>
+                <td></td>
+                <td class="right">20</td>
+                <td></td>
+                <td>14</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>45</td>
+                <td class="left"></td>
+                <td>39</td>
+                <td></td>
+                <td>33</td>
+                <td></td>
+                <td>27</td>
+                <td class="right"></td>
+                <td>21</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bottom left">46</td>
+                <td class="bottom"></td>
+                <td class="bottom">40</td>
+                <td class="bottom"></td>
+                <td class="bottom">34</td>
+                <td class="bottom"></td>
+                <td class="bottom right">28</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>47</td>
+                <td></td>
+                <td>41</td>
+                <td></td>
+                <td>35</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>48</td>
+                <td></td>
+                <td>42</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>49</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <p>It doesn't take lonf from here to realize the numbers go into the square moving the side value, in this case <b>7</b>,
+            into in:</p>
+        <table class="result">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="highlight_diagonal">1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>8</td>
+                <td></td>
+                <td>2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>15</td>
+                <td></td>
+                <td>9</td>
+                <td></td>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="top left">22</td>
+                <td class="top"></td>
+                <td class="top">16</td>
+                <td class="top"></td>
+                <td class="top">10</td>
+                <td class="top"></td>
+                <td class="top right">4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>29</td>
+                <td class="left"></td>
+                <td>23</td>
+                <td></td>
+                <td>17</td>
+                <td></td>
+                <td>11</td>
+                <td class="right"></td>
+                <td>5</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>36</td>
+                <td></td>
+                <td class="left">30</td>
+                <td></td>
+                <td>24</td>
+                <td></td>
+                <td>18</td>
+                <td></td>
+                <td class="right">12</td>
+                <td></td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="highlight_first_last">43</td>
+                <td></td>
+                <td>37</td>
+                <td class="left"></td>
+                <td>31</td>
+                <td></td>
+                <td>25</td>
+                <td class="highlight_first_last">43</td>
+                <td>19</td>
+                <td class="right"></td>
+                <td>13</td>
+                <td></td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>44</td>
+                <td></td>
+                <td class="left">38</td>
+                <td></td>
+                <td>32</td>
+                <td class="highlight_diagonal">1</td>
+                <td>26</td>
+                <td></td>
+                <td class="right">20</td>
+                <td></td>
+                <td>14</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>45</td>
+                <td class="left highlight_medium">21</td>
+                <td>39</td>
+                <td></td>
+                <td>33</td>
+                <td></td>
+                <td>27</td>
+                <td class="right"></td>
+                <td class="highlight_medium">21</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bottom left">46</td>
+                <td class="bottom"></td>
+                <td class="bottom">40</td>
+                <td class="bottom"></td>
+                <td class="bottom">34</td>
+                <td class="bottom"></td>
+                <td class="bottom right">28</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>47</td>
+                <td></td>
+                <td>41</td>
+                <td></td>
+                <td>35</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>48</td>
+                <td></td>
+                <td>42</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>49</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <p>And that's all there is to it.</p>
+        <p>I think, the largest side value I tested on paper, in my college days, was <b>19</b>. Mostly, because it's not easy to find squared paper with such a big matrix. But I'm pretty confident this method works for every odd-sided square.</p>
+        <h2>As a computer program</h2>
+        <p>Since then, I've started working as a software developer and I always had the goal of, one day, implement this method as a computer program. Recently, I started <a target="_blank" href="http://langs.bigsbyspot.org">exploring various programming languages</a> and decided this was the time. The code lives <a target="_blank" href="https://github.com/Bigsby/matrix.sum">here</a>. Or in each language:</p>
+        <ul>
+            <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/js">JavaScript</a></li>
+            <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/py">Python</a></li>
+            <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/rb">Ruby</a></li>
+            <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/go">Go</a></li>
+            <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/cs">C#</a></li>
+        </ul>
     </section>
 </body>
 

@@ -16,10 +16,12 @@ html, body{
 
 .content {
     padding: 1.5em;
+    max-width: 800px;
+    margin: 0 auto;
 }
 table.result{
     border-spacing: 0px;
-    margin: 25px;
+    margin: 25px auto;
 }
 
 table.outline {

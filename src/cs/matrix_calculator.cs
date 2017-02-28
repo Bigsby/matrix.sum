@@ -51,11 +51,11 @@ public class MatrixCalculator
 
             if (count % side != 0) {
                 current.Row++;
-                current.Column--;
+                current.Column++;
             }
             else {
                 current.Row = ++current.StartRow;
-                current.Column = ++current.StartColumn;
+                current.Column = --current.StartColumn;
             }
         }
 

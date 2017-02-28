@@ -1,9 +1,225 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Summing Matrices</title>
-    </head>
-    <body>
-        Here will be the story of summing matrices.
-    </body>
+
+<head>
+    <title>Summing Matrices</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body>
+    <div class="header">
+        Summing Matrices
+    </div>
+    <section class="content">
+        <p>That I can remember, I've always liked numbers. The ways they behave and relate has always aroused my interest. While
+            I was in college, there were always fun mathematical problems to solve running around the corridors and I was
+            one, amongst a bunch of people, who got entertained by trying to solve them. At some point, this simple problem
+            showed up:</p>
+        <p><b>Fill a 3 by 3 square with the numbers from 1 to 9 so that the sum of the numbers on every row, column and both diagonals are the same.</b></p>
+        <p>
+            Afther a little trial and error, the solution is easy to achieve:
+        </p>
+        <table class="result">
+            <tr>
+                <td>2</td>
+                <td>9</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>5</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>1</td>
+                <td>8</td>
+            </tr>
+        </table>
+        <p>And the sum of the numbers on every row column and both diagonals is <b>15</b>.</p>
+        <p>And, as usual, solving just the problem at hand isn't enough. I embarked in the taks of trying to solve the same
+            problem for a 5 by 5 square. After a little bit more trial and error than the first time, the solution presented
+            itself:
+        </p>
+        <table class="result">
+            <tr>
+                <td>3</td>
+                <td>20</td>
+                <td>7</td>
+                <td>24</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>8</td>
+                <td>25</td>
+                <td>12</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>21</td>
+                <td>13</td>
+                <td>5</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>14</td>
+                <td>1</td>
+                <td>18</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>2</td>
+                <td>19</td>
+                <td>6</td>
+                <td>23</td>
+            </tr>
+        </table>
+        <p>Where the sum of the numbers on every row column and both diagonals is <b>65</b>.</p>
+        <p>At this point, I thought it must be likely that all odd-sided squares have a similar solution and, consequently,
+            there must be a generic way to solve this problem for all. And, following that conviction, I started looking
+            for patterns and some stand out with the "naked eye".</p>
+        <table class="result">
+            <tr>
+                <td>2</td>
+                <td class="highlight_first_last">9</td>
+                <td class="highlight_diagonal">4</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td class="highlight_medium">5</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td class="highlight_diagonal">6</td>
+                <td class="highlight_first_last">1</td>
+                <td>8</td>
+            </tr>
+        </table>
+        <table class="result">
+            <tr>
+                <td>3</td>
+                <td>20</td>
+                <td>7</td>
+                <td>24</td>
+                <td class="highlight_diagonal">11</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>8</td>
+                <td class="highlight_first_last">25</td>
+                <td class="highlight_diagonal">12</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>21</td>
+                <td class="highlight_medium">13</td>
+                <td>5</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td class="highlight_diagonal">14</td>
+                <td class="highlight_first_last">1</td>
+                <td>18</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td class="highlight_diagonal">15</td>
+                <td>2</td>
+                <td>19</td>
+                <td>6</td>
+                <td>23</td>
+            </tr>
+        </table>
+        <ul>
+            <li>In the middle of the square goes medium (the middle nummber): <b>5</b> in 3x3; <b>13</b> in 5x5</li>
+            <li>Bellow medium number goes the first number, i.e., <b>1</b></li>
+            <li>Over medium number goes the last number: <b>9</b> in 3x3; <b>25</b> in 5x5</li>
+            <li>Top-right to bottom-left diagonal is in sequence, having the medium number, in the middle, which gives the most
+                important data to work with, i.e., the <b>sum value</b>:
+                <ul>
+                    <li><b class="highlight_diagonal">4</b>, <b class="highlight_medium">5</b> and <b class="highlight_diagonal">6</b>in
+                        3x3, summing <b>15</b>
+                    </li>
+                    <li><b class="highlight_diagonal">11</b>, <b class="highlight_diagonal">12</b>, <b class="highlight_medium">13</b>,
+                        <b class="highlight_diagonal">14</b> and <b class="highlight_diagonal">15</b> in 5x5 summing <b>65</b></li>
+                </ul>
+            </li>
+        </ul>
+        <p>Having this starting point, I took the task of solving the 7 by 7 square.</p>
+        <table class="result">
+            <tr>
+                <td>4</td>
+                <td>35</td>
+                <td>10</td>
+                <td>41</td>
+                <td>16</td>
+                <td>47</td>
+                <td class="highlight_diagonal">22</td>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td>11</td>
+                <td>42</td>
+                <td>17</td>
+                <td>48</td>
+                <td class="highlight_diagonal">23</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>36</td>
+                <td>18</td>
+                <td class="highlight_first_last">49</td>
+                <td class="highlight_diagonal">24</td>
+                <td>6</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>37</td>
+                <td>19</td>
+                <td>43</td>
+                <td class="highlight_medium">25</td>
+                <td>7</td>
+                <td>31</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>44</td>
+                <td class="highlight_diagonal">26</td>
+                <td class="highlight_first_last">1</td>
+                <td>32</td>
+                <td>14</td>
+                <td>38</td>
+            </tr>
+            <tr>
+                <td>45</td>
+                <td class="highlight_diagonal">27</td>
+                <td>2</td>
+                <td>33</td>
+                <td>8</td>
+                <td>39</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td class="highlight_diagonal">28</td>
+                <td>3</td>
+                <td>34</td>
+                <td>9</td>
+                <td>40</td>
+                <td>15</td>
+                <td>46</td>
+            </tr>
+        </table>
+        <p>Where the sum of the numbers on every row column and both diagonals is <b>175</b>.</p>
+    </section>
+</body>
+
 </html>

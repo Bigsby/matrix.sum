@@ -32,15 +32,15 @@ class MatrixCalculator:
         
         current = CurrentHolder(-(side - 1) // 2, side // 2, side)
 
-        for count in range(1, side * side) :
+        for count in range(1, side * side + 1) :
             matrix[current.ActualRow()][current.ActualColumn()] = count
 
             if count % side != 0:
                 current.row += 1
-                current.column -= 1
+                current.column += 1
             else:
                 current.startRow += 1
-                current.startColumn += 1
+                current.startColumn -= 1
                 current.row = current.startRow
                 current.column = current.startColumn
 

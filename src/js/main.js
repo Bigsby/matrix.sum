@@ -1,3 +1,4 @@
+"use strict";
 const readline = require("readline");
 const calculator = require("./matrix_calculator");
 const console_util = require("./console_util");

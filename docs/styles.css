@@ -1,0 +1,22 @@
+table.result{
+    border-spacing: 0px;
+    margin: 25px;
+}
+
+table.result td{
+    border: 1px solid black;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.highlight_diagonal{
+    background-color: lightgreen;
+}
+
+.highlight_medium{
+    background-color: lightsalmon;
+}
+
+.highlight_first_last{
+    background-color: lightgray;
+}

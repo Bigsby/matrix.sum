@@ -45,11 +45,11 @@ module.exports = {
 
             if (count % side != 0) {
                 current.row++;
-                current.column--;
+                current.column++;
             }
             else {
                 current.row = ++current.startRow;
-                current.column = ++current.startColumn;
+                current.column = --current.startColumn;
             }
         }
 

@@ -74,10 +74,10 @@ class MatrixCalculator
 
             if count % side != 0
                 current.row += 1
-                current.column -= 1
+                current.column += 1
             else
                 current.startRow += 1
-                current.startColumn += 1
+                current.startColumn -= 1
                 current.row = current.startRow
                 current.column = current.startColumn
             end

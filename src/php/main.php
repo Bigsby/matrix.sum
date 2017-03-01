@@ -17,7 +17,8 @@ if ($argc == 1){
 }
 
 $side = 0;
-if (is_numeric($inputSide)){
+
+if (ctype_digit($inputSide)){
     $side = intval($inputSide);
 }else{
     ErrorOut("Side number not valid!");
@@ -34,4 +35,10 @@ echo "\n";
 
 ConsoleUtil::DisplayMatrixResult($result);
 
+/*
+To execute run in the CLI:
+> php main.php
+or provide the side:
+> php main.php 7
+*/
 ?>

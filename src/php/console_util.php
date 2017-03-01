@@ -3,7 +3,7 @@ class ConsoleUtil{
     public static function Prompt($question){
         echo $question;
         $handle = fopen ("php://stdin","r");
-        return fgets($handle);
+        return trim(fgets($handle));
     }
 
     public static function DisplayMatrixResult($result){

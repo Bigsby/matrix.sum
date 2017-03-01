@@ -2,19 +2,42 @@ package main
 
 import "os"
 import "fmt"
-import "bufio"
+import "strconv"
 
-func main(){
-    args := os.Args[1:]
+import console_util "./console_util"
+import matrix_calculator "./matrix_calculator"
 
-    if len(args) == 1 {
-        fmt.Println(args[0])
-    } else {
-        fmt.Println("No args")
-    }
+func errorOut(message string) {
+	fmt.Println(message)
+	os.Exit(0)
+}
 
-    fmt.Println("Input something: ")
-    reader := bufio.NewReader(os.Stdin)
-    input, _, _ := reader.ReadLine()
-    fmt.Println(string(input))
+func main() {
+	args := os.Args[1:]
+
+	var inputSide = ""
+	if len(args) == 1 {
+		inputSide = args[0]
+	} else {
+		inputSide = console_util.Prompt("Input side (odd):")
+	}
+
+	side, err := strconv.Atoi(inputSide)
+	if err != nil {
+		errorOut("Side number not valid!")
+	}
+
+	if side%2 == 0 {
+		errorOut("Side needs to be an odd number!")
+	}
+
+	result, _ := matrix_calculator.Calculate(side)
+
+	if result.Success {
+		fmt.Println("Matrix calculated successfully!")
+	} else {
+		fmt.Println("Error calculating matrix!!!")
+	}
+
+	console_util.DisplayMatrixResult(result)
 }

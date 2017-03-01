@@ -22,7 +22,7 @@ else
 end
 
 =begin
-To execute run in ths CLI:
+To execute run in the CLI:
 > ruby main.rb
 or provide the side:
 > ruby main.rb 7

@@ -41,3 +41,10 @@ func main() {
 
 	console_util.DisplayMatrixResult(result)
 }
+
+/*
+To execute run in the CLI:
+> go run main.go
+or provide the side:
+> go run main.go 7
+*/

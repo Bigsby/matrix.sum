@@ -42,7 +42,7 @@ function calculate() {
 })();
 
 /*
-To execute run in ths CLI:
+To execute run in the CLI:
 > node main
 or provide the side:
 > node main 7

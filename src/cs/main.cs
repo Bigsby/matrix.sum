@@ -39,7 +39,7 @@ class Program {
 To compile rum:
 > csc main.cs console_util.cs matrix_calculator.cs matrix_result.cs
 
-To execute run in ths CLI:
+To execute run in the CLI:
 > main
 or provie the side:
 > main 5

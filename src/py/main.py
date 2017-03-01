@@ -27,7 +27,7 @@ print("Matrix calculated successfully!" if result.success else "Error calculatin
 ConsoleUtil.DisplayMatrixResult(result, side)
 
 '''
-To execute run in ths CLI:
+To execute run in the CLI:
 > py main.py
 or provide the side:
 > py main.py 11

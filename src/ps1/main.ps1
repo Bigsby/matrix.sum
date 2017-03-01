@@ -30,6 +30,15 @@ if ($side % 2 -eq 0){
 $result = [MatrixCalculator]::Calculate($side)
 if ($result.Success) {
     Write-Host "Matrix calculated successfully!"
+    [ConsoleUtil]::DisplayMatrixResult($result)
 } else {
     Write-Host "Error calculating matrix!!!"
 }
+
+<# 
+This is a 
+To execute run in the Powershell:
+> main.ps1
+or provide the side:
+> main.ps1 7
+#>

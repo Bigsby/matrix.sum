@@ -1,4 +1,5 @@
 . "./matrix_result.ps1"
+
 class CurrentHolder{
     [int]$Row
     [int]$Column
@@ -26,7 +27,7 @@ class CurrentHolder{
         }elseif ($value -ge $this.side){
             return $value - $this.side
         }
-        return value;
+        return $value;
     }
 }
 class MatrixCalculator {
@@ -35,9 +36,21 @@ class MatrixCalculator {
     }
 
     [MatrixResult] static Calculate([int]$side){
-        $expectedSum = side * (side * side + 1) / 2
+        $expectedSum = $side * ($side * $side + 1) / 2
         $matrix = [MatrixCalculator]::CreateEmptyMatrix($side)
-        $current = [CurrentHolder]::new(-($side - 1) / 2, ($side - 1)/2)
+        $current = [CurrentHolder]::new(-($side - 1) / 2, ($side - 1)/2, $side)
+
+        foreach($count in 1..($side*$side)) {
+            $matrix[$current.ActualRow(), $current.ActualColumn()] = $count
+
+            if ($count % $side -ne 0){
+                $current.Row++
+                $current.Column++
+            }else{
+                $current.Row = ++$current.StartRow
+                $current.Column = --$current.StartColumn
+            }
+        }
 
         return [MatrixResult]::new($matrix,$expectedSum, $side, $true)
     }

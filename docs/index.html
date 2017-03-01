@@ -16,7 +16,7 @@
             I was in college, there were always fun mathematical problems to solve running around the corridors and I was
             one, amongst a bunch of people, who got entertained by trying to solve them. At some point, this simple problem
             showed up:</p>
-        <p><b>Fill a 3 by 3 square with the numbers from 1 to 9 so that the sum of the numbers on every row, column and both diagonals are the same.</b></p>
+        <p><b>Fill a 3 by 3 square with the numbers from 1 to 9 so that the sum of the numbers on each row, column and both diagonals are the same.</b></p>
         <p>
             After a little trial and error, the solution is easy to achieve:
         </p>
@@ -37,7 +37,7 @@
                 <td>6</td>
             </tr>
         </table>
-        <p>And the sum of the numbers on every row column and both diagonals is <b>15</b>.</p>
+        <p>And the sum of the numbers on each row column and both diagonals is <b>15</b>.</p>
         <p>And, as usual, solving just the problem at hand isn't enough. I embarked in the task of trying to solve the same
             problem for a 5 by 5 square. After a little bit more trial and error than the first time, the solution presented
             itself:
@@ -79,7 +79,7 @@
                 <td>15</td>
             </tr>
         </table>
-        <p>Where the sum of the numbers on every row column and both diagonals is <b>65</b>.</p>
+        <p>Where the sum of the numbers on each row column and both diagonals is <b>65</b>.</p>
         <p>At this point, I thought it must be likely that all odd-sided squares have a similar solution and, consequently,
             there must be a generic way to solve this problem for all. And, following that conviction, I started looking
             for patterns and some stand out with the "naked eye".</p>
@@ -138,18 +138,22 @@
             </tr>
         </table>
         <ul>
-            <li>In the middle of the square goes medium (the middle nummber): <b>5</b> in 3x3; <b>13</b> in 5x5</li>
-            <li>Bellow medium number goes the first number, i.e., <b>1</b></li>
-            <li>Over medium number goes the last number: <b>9</b> in 3x3; <b>25</b> in 5x5</li>
-            <li>Top-left to bottom-right diagonal is in sequence, having the medium number, in the middle, which gives the most
-                important data to work with, i.e., the <b>sum value</b>:
+            <li>In the middle of the square goes the medium (the middle nummber): <b class="highlight_medium hightlightInText">5</b> in 3x3; <b class="highlight_medium hightlightInText">13</b> in 5x5</li>
+            <li>Bellow the medium number goes the first number, i.e., <b class="highlight_first_last hightlightInText">1</b></li>
+            <li>Over the medium number goes the last number: <b class="highlight_first_last hightlightInText">9</b> in 3x3; <b class="highlight_first_last hightlightInText">25</b> in 5x5</li>
+            <li>Top-left to bottom-right diagonal is in sequence, having the medium number, in the middle:
                 <ul>
-                    <li><b class="highlight_diagonal">4</b>, <b class="highlight_medium">5</b> and <b class="highlight_diagonal">6</b>in
-                        3x3, summing <b>15</b>
+                    <li><b class="highlight_diagonal hightlightInText">4</b>, <b class="highlight_medium hightlightInText">5</b> and <b class="highlight_diagonal hightlightInText">6</b>in
+                        3x3
                     </li>
-                    <li><b class="highlight_diagonal">11</b>, <b class="highlight_diagonal">12</b>, <b class="highlight_medium">13</b>,
-                        <b class="highlight_diagonal">14</b> and <b class="highlight_diagonal">15</b> in 5x5, summing <b>65</b></li>
+                    <li><b class="highlight_diagonal hightlightInText">11</b>, <b class="highlight_diagonal hightlightInText">12</b>, <b class="highlight_medium">13</b>,
+                        <b class="highlight_diagonal hightlightInText">14</b> and <b class="highlight_diagonal hightlightInText">15</b> in 5x5
                 </ul>
+            </li>
+            <li>Since the top-left to bottom-right diagonal numbers are known and sequential, it's easy to calculate the expected value of the sum of each row, column and both diagonals:
+                <p class="formula"><b>&fnof;(<var>side</var>) = <var>side</var> * (<var>side</var><sup>2</sup> + 1) / 2</b></p>
+                <p>Where <b>(<var>side</var><sup>2</sup> + 1) / 2</b> finds the medium that than, is multiplied by the <b><var>side</var></b>. The differences of the other numbers to the medium are cancelled, e.g., in the 5 by 5 square where the medium is <b class="highlight_medium hightlightInText">13</b>, <b class="highlight_diagonal hightlightInText">12</b> cancels <b class="highlight_diagonal hightlightInText">14</b> and <b class="highlight_diagonal hightlightInText">11</b> cancels <b class="highlight_diagonal hightlightInText">15</b>
+
             </li>
         </ul>
         <p>Having this starting point, I took the task of solving the 7 by 7 square.</p>
@@ -218,7 +222,7 @@
                 <td class="highlight_diagonal">28</td>
             </tr>
         </table>
-        <p>Where the sum of the numbers on every row column and both diagonals is <b>175</b>.</p>
+        <p>Where the sum of the numbers on each row column and both diagonals is <b>175</b>.</p>
         <p>Some more scrutiny and some more patterns become evident, like the sequences of numbers in diagonals parallel to
             the middle top-left to bottom-right:</p>
         <table class="result outline">
@@ -958,6 +962,7 @@
             <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/rb">Ruby</a></li>
             <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/go">Go</a></li>
             <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/cs">C#</a></li>
+            <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/ps1">PowerShell</a></li>
         </ul>
     </section>
 </body>

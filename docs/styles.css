@@ -64,3 +64,11 @@ table.result td.inSquare{
 .highlight_first_last{
     background-color: lightgray;
 }
+
+.formula {
+    text-align: center;
+}
+
+.hightlightInText {
+    padding: 0 5px;
+}

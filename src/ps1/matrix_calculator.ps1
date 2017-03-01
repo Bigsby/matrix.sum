@@ -35,6 +35,47 @@ class MatrixCalculator {
         return New-Object "int[,]" $side, $side
     }
 
+    hidden [bool] static TestResult([int[,]]$matrix, [int]$expectedSum, [int]$side){
+        
+        for ($rowIndex = 0; $rowIndex -lt $side; $rowIndex++){
+            $sum = 0;
+            for ($columnIndex = 0; $columnIndex -lt $side; $columnIndex++){
+                $sum += $matrix[$rowIndex, $columnIndex];
+            }
+            if ($sum -ne $expectedSum){
+                return $false;
+            }
+        }
+
+        for ($columnIndex = 0; $columnIndex -lt $side; $columnIndex++){
+            $sum = 0;
+            for ($rowIndex = 0; $rowIndex -lt $side; $rowIndex++){
+                $sum += $matrix[$rowIndex, $columnIndex];
+            }
+            if ($sum -ne $expectedSum){
+                return $false;
+            }
+        }
+
+        $diagonalSum = 0;
+        for ($diagonalIndex = 0; $diagonalIndex -lt $side; $diagonalIndex++){
+            $diagonalSum += $matrix[$diagonalIndex, $diagonalIndex];
+        }
+        if ($diagonalSum -ne $expectedSum){
+            return $false;
+        }
+
+        $diagonalSum = 0;
+        for ($diagonalIndex = 0; $diagonalIndex -lt $side; $diagonalIndex++){
+            $diagonalSum += $matrix[$diagonalIndex, ($side - $diagonalIndex - 1)];
+        }
+        if ($diagonalSum -ne $expectedSum){
+            return $false;
+        }
+
+        return $true;
+    }
+
     [MatrixResult] static Calculate([int]$side){
         $expectedSum = $side * ($side * $side + 1) / 2
         $matrix = [MatrixCalculator]::CreateEmptyMatrix($side)
@@ -52,6 +93,6 @@ class MatrixCalculator {
             }
         }
 
-        return [MatrixResult]::new($matrix,$expectedSum, $side, $true)
+        return [MatrixResult]::new($matrix,$expectedSum, $side, [MatrixCalculator]::TestResult($matrix, $expectedSum, $side));
     }
 }

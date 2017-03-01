@@ -37,6 +37,43 @@ class MatrixCalculator{
         return array_fill(0, $side, array_fill(0, $side, 0));
     }
 
+    private static function TestResult($matrix, $expectedSum, $side){
+
+        for ($rowIndex = 0; $rowIndex < $side; $rowIndex++){
+            $sum = 0;
+            for ($columnIndex = 0;$columnIndex < $side; $columnIndex++){
+                $sum += $matrix[$rowIndex][$columnIndex];
+            }
+            if ($sum != $expectedSum)
+                return false;
+        }
+
+        for ($columnIndex = 0; $columnIndex < $side; $columnIndex++){
+            $sum = 0;
+            for ($rowIndex = 0;$rowIndex < $side; $rowIndex++){
+                $sum += $matrix[$rowIndex][$columnIndex];
+            }
+            if ($sum != $expectedSum)
+                return false;
+        }
+
+        $diagonalSum = 0;
+        for ($diagonalIndex; $diagonalIndex < $side; $diagonalIndex++){
+            $diagonalSum += $matrix[$diagonalIndex][$diagonalIndex];
+        }
+        if ($diagonalSum != $expectedSum)
+            return false;
+
+        $diagonalSum = 0;
+        for ($diagonalIndex; $diagonalIndex < $side; $diagonalIndex++){
+            $diagonalSum += $matrix[$diagonalIndex][$side - $diagonalIndex -1];
+        }
+        if ($diagonalSum != $expectedSum)
+            return false;
+
+        return true;
+    }
+
     public static function Calculate($side){
         if ($side % 2 != 1){
             throw new Exception("Side needs to be an odd number.");
@@ -58,7 +95,7 @@ class MatrixCalculator{
             }
         }
 
-        return new MatrixResult($matrix, $expectedSum, $side, true);
+        return new MatrixResult($matrix, $expectedSum, $side, MatrixCalculator::TestResult($matrix, $expectedSum, $side));
     }
 }
 ?>

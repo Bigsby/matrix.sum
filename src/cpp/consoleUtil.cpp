@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <iomanip>
-#include "matrix_result.cpp"
+#include "matrixResult.cpp"
 
 using namespace std;
 

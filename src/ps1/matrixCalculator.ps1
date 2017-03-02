@@ -1,4 +1,4 @@
-. "./matrix_result.ps1"
+. "./matrixResult.ps1"
 
 class CurrentHolder{
     [int]$Row

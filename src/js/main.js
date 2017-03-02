@@ -1,45 +1,44 @@
 "use strict";
-const readline = require("readline");
-const calculator = require("./matrix_calculator");
-const console_util = require("./console_util");
+const calculator = require("./matrixCalculator");
+const consoleUtil = require("./consoleUtil");
+const parseSideResult = require("./parseSideResult");
 
 let side = 0;
+
+function parseSideInput(inputSide) {
+    if (/^[0-9]+$/.test(inputSide))
+        return new parseSideResult(parseInt(inputSide));
+    return new parseSideResult("Side input not valid!");
+}
 
 function errorOut(message) {
     console.log(message);
     process.exit();
 }
 
-function ask(callback) {
-    console_util.prompt("Input side (odd):", function (input) {
-        side = parseInt(input);
-        if (callback)
-            callback();
-    });
-};
+function handleInput(inputSide) {
+    var parseResult = parseSideInput(inputSide);
+    if (parseResult.success) {
+        try {
+            var result = calculator.calculate(parseResult.side);
 
-function calculate() {
-    if (isNaN(side))
-        errorOut("Side number not valid!");
-    if (side % 2 == 0)
-        errorOut("Side needs to be an odd number!");
+            console.log(result.success ? "Matrix calculated successfully!" : "Error calculating matrix!!!");
 
-    var result = calculator.calculate(side);
+            consoleUtil.displayMatrixResult(result);
 
-    console.log(result.success ? "Matrix calculated successfully!" : "Error calculating matrix!!!");
-
-    console_util.displayMatrixResult(result);
-};
-
-(function () {
-    var args = process.argv.slice(2);
-    if (args.length) {
-        side = parseInt(args[0]);
-        calculate();
+        } catch (error) {
+            errorOut(error.message);
+        }
+    } else {
+        errorOut(parseResult.errorMessage);
     }
-    else
-        ask(calculate);
-})();
+}
+
+var args = process.argv.slice(2);
+if (args.length)
+    handleInput(args[0]);
+else
+    consoleUtil.prompt("Input side (odd):", handleInput);
 
 /*
 To execute run in the CLI:

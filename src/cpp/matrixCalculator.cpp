@@ -1,6 +1,7 @@
 #include <exception>
 #include <vector>
-#include "matrix_result.cpp"
+#include <iostream>
+#include "matrixResult.cpp"
 
 class CurrentHolder
 {
@@ -87,7 +88,9 @@ class MatrixCalculator
     static MatrixResult Calculate(int side)
     {
         if (side % 2 != 1)
+        {
             throw exception("Side needs to be an odd number.");
+        }
 
         int expectedSum = side * (side * side + 1) / 2;
         vector<vector<int>> matrix = CreateEmptyMatrix(side);

@@ -34,11 +34,15 @@ function handleInput(inputSide) {
     }
 }
 
-var args = process.argv.slice(2);
-if (args.length)
-    handleInput(args[0]);
-else
-    consoleUtil.prompt("Input side (odd):", handleInput);
+function main() {
+    var args = process.argv.slice(2);
+    if (args.length)
+        handleInput(args[0]);
+    else
+        consoleUtil.prompt("Input side (odd):", handleInput);
+}
+
+main();
 
 /*
 To execute run in the CLI:

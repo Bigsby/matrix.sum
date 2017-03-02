@@ -1,5 +1,6 @@
-from matrix_result import MatrixResult
-class CurrentHolder:
+import results
+
+class _CurrentHolder:
     def __init__(self, row, column, side):
         self.row = self.startRow = row
         self.column = self.startColumn = column
@@ -58,9 +59,12 @@ class MatrixCalculator:
 
     @staticmethod
     def Calculate(side):
+        if side % 2 != 1:
+            raise Exception("Side needs to be an odd number.")
+
         expectedSum = side * (side * side + 1) // 2
         matrix = MatrixCalculator.__CreateEmptyMatrix(side)
-        current = CurrentHolder(-(side - 1) // 2, side // 2, side)
+        current = _CurrentHolder(-(side - 1) // 2, side // 2, side)
 
         for count in range(1, side * side + 1):
             matrix[current.ActualRow()][current.ActualColumn()] = count
@@ -74,4 +78,4 @@ class MatrixCalculator:
                 current.row = current.startRow
                 current.column = current.startColumn
 
-        return MatrixResult(matrix, expectedSum, side, MatrixCalculator.__TestResult(matrix, expectedSum, side))
+        return results.MatrixResult(matrix, expectedSum, side, MatrixCalculator.__TestResult(matrix, expectedSum, side))

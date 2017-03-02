@@ -8,12 +8,6 @@
 using namespace std;
 using namespace results;
 
-void ErrorOut(string message)
-{
-  cout << message;
-  exit(0);
-}
-
 ParseSideResult ParseSideInput(string inputSide)
 {
   if (regex_match(inputSide, regex("^[0-9]+$")))
@@ -21,6 +15,12 @@ ParseSideResult ParseSideInput(string inputSide)
     return ParseSideResult(stoi(inputSide));
   }
   return ParseSideResult("Side input not valid!");
+}
+
+void ErrorOut(string message)
+{
+  cout << message;
+  exit(0);
 }
 
 int main(int argc, char *argv[])

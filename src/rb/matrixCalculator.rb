@@ -1,4 +1,4 @@
-require_relative "matrix_result"
+require_relative "results"
 
 class CurrentHolder
     def initialize(row, column, side)
@@ -85,7 +85,7 @@ class MatrixCalculator
             
         end
         
-        return MatrixResult.new(matrix, expectedSum, side, TestResult(matrix, expectedSum, side))
+        return Results::MatrixResult.new(matrix, expectedSum, side, TestResult(matrix, expectedSum, side))
     end
 
     private

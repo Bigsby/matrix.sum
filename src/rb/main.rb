@@ -1,5 +1,14 @@
-require_relative "console_util"
-require_relative "matrix_calculator"
+require_relative "consoleUtil"
+require_relative "results"
+require_relative "matrixCalculator"
+
+def ParseSideInput(inputSide)
+    if inputSide =~ /^[0-9]+$/
+        return Results::ParseSideResult.new(inputSide.to_i)
+    else
+        return Results::ParseSideResult.new("Side input not valid!")
+    end
+end
 
 def ErrorOut(message)
     puts message
@@ -13,12 +22,19 @@ else
     inputSide = ARGV[0]
 end
 
-if inputSide =~ /^[0-9]+$/
-    result = MatrixCalculator.Calculate(inputSide.to_i)
-    puts result.success ? "Matrix calculated successfully!" : "Error calculating matrix!!!"
-    ConsoleUtil.DisplayMatrixResult(result)
+parseResult = ParseSideInput(inputSide)
+
+if parseResult.success
+    begin
+        result = MatrixCalculator.Calculate(inputSide.to_i)
+        puts result.success ? "Matrix calculated successfully!" : "Error calculating matrix!!!"
+        ConsoleUtil.DisplayMatrixResult(result)
+    rescue Exception => ex
+        ErrorOut(ex.message)
+    end
+
 else
-    ErrorOut("Side number not valid!")
+    ErrorOut(parseResult.errorMessage)
 end
 
 =begin

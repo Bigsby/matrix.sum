@@ -2,11 +2,11 @@
 #include <string>
 #include <regex>
 #include "consoleUtil.cpp"
-#include "ParseSideResult.cpp"
-#include "matrixResult.cpp"
+#include "results.cpp"
 #include "matrixCalculator.cpp"
 
 using namespace std;
+using namespace results;
 
 void ErrorOut(string message)
 {

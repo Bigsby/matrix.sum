@@ -1,7 +1,9 @@
 #include <exception>
 #include <vector>
 #include <iostream>
-#include "matrixResult.cpp"
+#include "results.cpp"
+
+using namespace results;
 
 class CurrentHolder
 {

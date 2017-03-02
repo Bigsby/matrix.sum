@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <iomanip>
-#include "matrixResult.cpp"
+#include "results.cpp"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ class ConsoleUtil
         return result;
     }
 
-    static void DisplayMatrixResult(MatrixResult result)
+    static void DisplayMatrixResult(results::MatrixResult result)
     {
         vector<vector<int>> matrix = result.Matrix;
         int length = max(to_string(result.Side * result.Side).length() + 1, static_cast<unsigned int>(2));

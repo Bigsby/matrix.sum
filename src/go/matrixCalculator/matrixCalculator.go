@@ -4,7 +4,9 @@ import (
 	"errors"
 )
 
-func CreateEmptyMatrix(side int) [][]int {
+import results "../results"
+
+func createEmptyMatrix(side int) [][]int {
 	result := [][]int{}
 	for rowIndex := 0; rowIndex < side; rowIndex++ {
 		row := []int{}
@@ -43,13 +45,13 @@ func (current *currentHolder) actualColumn() int {
 }
 
 // Calculate calculates the matrix
-func Calculate(side int) (MatrixResult, error) {
+func Calculate(side int) (results.MatrixResult, error) {
 	if side%2 != 1 {
-		return MatrixResult{}, errors.New("side needs to be an odd number")
+		return results.MatrixResult{}, errors.New("Side needs to be an odd number")
 	}
 
 	expectedSum := side * (side*side + 1) / 2
-	matrix := CreateEmptyMatrix(side)
+	matrix := createEmptyMatrix(side)
 	current := currentHolder{
 		-(side - 1) / 2,
 		(side - 1) / 2,
@@ -71,5 +73,5 @@ func Calculate(side int) (MatrixResult, error) {
 		}
 	}
 
-	return MatrixResult{matrix, expectedSum, side, true}, nil
+	return results.MatrixResult{matrix, expectedSum, side, true}, nil
 }

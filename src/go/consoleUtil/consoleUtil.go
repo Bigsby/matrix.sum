@@ -1,4 +1,4 @@
-package console_util
+package consoleUtil
 
 import (
 	"bufio"
@@ -6,8 +6,9 @@ import (
 	"os"
 )
 
-import matrix_calculator "../matrix_calculator"
+import results "../results"
 
+// Prompt asks user a question
 func Prompt(question string) string {
 	fmt.Println(question)
 	reader := bufio.NewReader(os.Stdin)
@@ -32,7 +33,7 @@ func max(a, b int) int {
 }
 
 // DisplayMatrixResult outputs the matrix in the console
-func DisplayMatrixResult(result matrix_calculator.MatrixResult) {
+func DisplayMatrixResult(result results.MatrixResult) {
 	matrix := result.Matrix
 	length := max(len(fmt.Sprintf("%d", result.Side*result.Side))+1, 2)
 

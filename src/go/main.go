@@ -1,11 +1,23 @@
 package main
 
 import "os"
+import "regexp"
 import "fmt"
 import "strconv"
 
-import console_util "./console_util"
-import matrix_calculator "./matrix_calculator"
+import console_util "./consoleUtil"
+import results "./results"
+import matrix_calculator "./matrixCalculator"
+
+func parseSideInput(inputSide string) *results.ParseSideResult {
+	matched, err := regexp.MatchString("^[0-9]+$", inputSide)
+	if matched && err == nil {
+		side, _ := strconv.Atoi(inputSide)
+		return results.SuccessfulParseSideResult(side)
+	}
+
+	return results.FailedParseSideResult("Side input not valid!")
+}
 
 func errorOut(message string) {
 	fmt.Println(message)
@@ -22,24 +34,24 @@ func main() {
 		inputSide = console_util.Prompt("Input side (odd):")
 	}
 
-	side, err := strconv.Atoi(inputSide)
-	if err != nil {
-		errorOut("Side number not valid!")
-	}
+	parseResult := parseSideInput(inputSide)
+	if parseResult.Success {
+		result, err := matrix_calculator.Calculate(parseResult.Side)
 
-	if side%2 == 0 {
-		errorOut("Side needs to be an odd number!")
-	}
+		if err != nil {
+			errorOut(err.Error())
+		}
 
-	result, _ := matrix_calculator.Calculate(side)
+		if result.Success {
+			fmt.Println("Matrix calculated successfully!")
+		} else {
+			fmt.Println("Error calculating matrix!!!")
+		}
 
-	if result.Success {
-		fmt.Println("Matrix calculated successfully!")
+		console_util.DisplayMatrixResult(result)
 	} else {
-		fmt.Println("Error calculating matrix!!!")
+		errorOut(parseResult.ErrorMessage)
 	}
-
-	console_util.DisplayMatrixResult(result)
 }
 
 /*

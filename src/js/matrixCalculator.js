@@ -1,4 +1,4 @@
-const matrixResult = require("./matrixResult");
+const results = require("./results");
 
 function createEmptyMatrix(side) {
     var result = new Array(side);
@@ -87,6 +87,6 @@ module.exports = {
             }
         }
 
-        return new matrixResult(matrix, expectedSum, side, testResult(matrix, expectedSum, side));
+        return new results.matrixResult(matrix, expectedSum, side, testResult(matrix, expectedSum, side));
     }
 }

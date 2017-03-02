@@ -1,14 +1,14 @@
 "use strict";
 const calculator = require("./matrixCalculator");
 const consoleUtil = require("./consoleUtil");
-const parseSideResult = require("./parseSideResult");
+const results = require("./results");
 
 let side = 0;
 
 function parseSideInput(inputSide) {
     if (/^[0-9]+$/.test(inputSide))
-        return new parseSideResult(parseInt(inputSide));
-    return new parseSideResult("Side input not valid!");
+        return new results.parseSideResult(parseInt(inputSide));
+    return new results.parseSideResult("Side input not valid!");
 }
 
 function errorOut(message) {

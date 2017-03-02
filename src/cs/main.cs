@@ -1,6 +1,12 @@
 using static System.Console;
+using Results;
 
-class Program {
+class Program 
+{
+    private static ParseSideResult ParseSideInput(string inputSide)
+    {
+        return new ParseSideResult("not implemented");
+    }
 
     private static void ErrorOut(string message)
     {
@@ -36,8 +42,8 @@ class Program {
 }
 
 /*
-To compile rum:
-> csc main.cs console_util.cs matrix_calculator.cs matrix_result.cs
+To compile run:
+> csc main.cs consoleUtil.cs matrixCalculator.cs results.cs
 
 To execute run in the CLI:
 > main

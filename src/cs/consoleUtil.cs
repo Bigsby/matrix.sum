@@ -1,14 +1,15 @@
 using System;
 using static System.Console;
 
-public static class ConsoleUtil {
+public static class ConsoleUtil 
+{
     public static string Prompt(string question)
     {
         WriteLine(question);
         return ReadLine();
     }
 
-    public static void DisplayMatrixResult(MatrixResult  result)
+    public static void DisplayMatrixResult(Results.MatrixResult  result)
     {
         var matrix = result.Matrix;
         var length = Math.Max(Math.Pow(result.Side, 2).ToString().Length + 1, 2);

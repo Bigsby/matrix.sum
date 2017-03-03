@@ -47,6 +47,18 @@ class CurrentHolder
         return Actual(@column)
     end
 
+    def Next(count)
+        if count % @side != 0
+            @row += 1
+            @column += 1
+        else
+            @startRow += 1
+            @startColumn -= 1
+            @row = @startRow
+            @column = @startColumn
+        end
+    end
+
     private
     def Actual(value)
         if value < 0
@@ -73,16 +85,7 @@ class MatrixCalculator
         for count in 1..side * side
             matrix[current.ActualRow][current.ActualColumn] = count
 
-            if count % side != 0
-                current.row += 1
-                current.column += 1
-            else
-                current.startRow += 1
-                current.startColumn -= 1
-                current.row = current.startRow
-                current.column = current.startColumn
-            end
-            
+            current.Next(count)            
         end
         
         return Results::MatrixResult.new(matrix, expectedSum, side, TestResult(matrix, expectedSum, side))

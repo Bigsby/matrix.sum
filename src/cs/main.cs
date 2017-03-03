@@ -1,3 +1,5 @@
+using System;
+using System.Text.RegularExpressions;
 using static System.Console;
 using Results;
 
@@ -5,7 +7,10 @@ class Program
 {
     private static ParseSideResult ParseSideInput(string inputSide)
     {
-        return new ParseSideResult("not implemented");
+        if (new Regex("^[0-9]+$").IsMatch(inputSide))
+            return new ParseSideResult(int.Parse(inputSide));
+
+        return new ParseSideResult("Side input not valid!");
     }
 
     private static void ErrorOut(string message)
@@ -26,6 +31,24 @@ class Program
         else
             inputSide = args[0];
 
+        var parseResult = ParseSideInput(inputSide);
+
+        if (parseResult.Success)
+        {
+            try 
+            {
+                var result = MatrixCalculator.Calculate(parseResult.Side);
+                WriteLine(result.Success ? "Matrix calculated successfully!" : "Error calculating matrix!!!");
+                ConsoleUtil.DisplayMatrixResult(result);
+            }
+            catch (Exception ex)
+            {
+                ErrorOut(ex.Message);
+            }
+        }
+        else
+            ErrorOut(parseResult.ErrorMessage);
+
         int side;
         if (!int.TryParse(inputSide, out side))
             ErrorOut("Side number not valid!");
@@ -33,17 +56,13 @@ class Program
          if (side % 2 == 0)
             ErrorOut("Side needs to be an odd number!");
 
-        var result = MatrixCalculator.Calculate(side);
-        WriteLine(result.Success ? "Matrix calculated successfully!" : "Error calculating matrix!!!");
-        ConsoleUtil.DisplayMatrixResult(result);
-
         return 0;
     }
 }
 
 /*
 To compile run:
-> csc main.cs consoleUtil.cs matrixCalculator.cs results.cs
+> csc *.cs
 
 To execute run in the CLI:
 > main

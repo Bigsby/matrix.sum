@@ -1,6 +1,5 @@
 . "./consoleUtil.ps1"
-. "./parseSideResult.ps1"
-. "./matrixResult.ps1"
+. "./results.ps1"
 . "./matrixCalculator.ps1"
 
 function ErrorOut{
@@ -17,33 +16,56 @@ function  ParseSideInput ([string]$inputSide) {
     }
 }
 
-$inputSide = ""
-if ($args.Length){
-    $inputSide = $args[0]
-} else {
-    $inputSide = [ConsoleUtil]::Prompt("Input side (odd)")
+function Main ([string[]]$cliargs) {
+    $inputSide = ""
+    if ($cliargs.Length){
+        $inputSide = $cliargs[0]
+    } else {
+        $inputSide = [ConsoleUtil]::Prompt("Input side (odd)")
+    }
+
+    $parseResult = ParseSideInput($inputSide)
+
+    if ($parseResult.Success) {
+        try {
+            $result = [MatrixCalculator]::Calculate($parseResult.Side)
+            if ($result.Success) {
+                Write-Host "Matrix calculated successfully!"
+                [ConsoleUtil]::DisplayMatrixResult($result)
+            } else {
+                Write-Host "Error calculating matrix!!!"
+            }    
+        }
+        catch {
+            ErrorOut($_.Exception.Message)
+        }
+        
+    }else{
+        ErrorOut($parseResult.ErrorMessage)
+    }
 }
 
-$parseResult = ParseSideInput()
-$side = 0
-try {
-    $side = [convert]::ToInt32($inputSide, 10)
-}
-catch {
-    ErrorOut -message "Side number not valid!"
-}
+Main($args)
 
-if ($side % 2 -eq 0){
-    ErrorOut -message "Side needs to be an odd number!"
-}
+# $side = 0
+# try {
+#     $side = [convert]::ToInt32($inputSide, 10)
+# }
+# catch {
+#     ErrorOut -message "Side number not valid!"
+# }
 
-$result = [MatrixCalculator]::Calculate($side)
-if ($result.Success) {
-    Write-Host "Matrix calculated successfully!"
-    [ConsoleUtil]::DisplayMatrixResult($result)
-} else {
-    Write-Host "Error calculating matrix!!!"
-}
+# if ($side % 2 -eq 0){
+#     ErrorOut -message "Side needs to be an odd number!"
+# }
+
+# $result = [MatrixCalculator]::Calculate($side)
+# if ($result.Success) {
+#     Write-Host "Matrix calculated successfully!"
+#     [ConsoleUtil]::DisplayMatrixResult($result)
+# } else {
+#     Write-Host "Error calculating matrix!!!"
+# }
 
 <# 
 This is a 

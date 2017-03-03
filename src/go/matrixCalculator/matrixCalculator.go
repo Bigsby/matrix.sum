@@ -26,6 +26,18 @@ type currentHolder struct {
 	StartColumn int
 }
 
+func (current *currentHolder) Next(count int) {
+	if count%current.side != 0 {
+		current.Row++
+		current.Column++
+	} else {
+		current.StartRow++
+		current.Row = current.StartRow
+		current.StartColumn--
+		current.Column = current.StartColumn
+	}
+}
+
 func (current *currentHolder) actual(value int) int {
 	if value < 0 {
 		return value + current.side
@@ -62,15 +74,7 @@ func Calculate(side int) (results.MatrixResult, error) {
 	for count := 1; count <= side*side; count++ {
 		matrix[current.actualRow()][current.actualColumn()] = count
 
-		if count%side != 0 {
-			current.Row++
-			current.Column++
-		} else {
-			current.StartRow++
-			current.Row = current.StartRow
-			current.StartColumn--
-			current.Column = current.StartColumn
-		}
+		current.Next(count)
 	}
 
 	return results.MatrixResult{matrix, expectedSum, side, true}, nil

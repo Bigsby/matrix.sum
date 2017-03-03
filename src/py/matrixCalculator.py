@@ -21,6 +21,16 @@ class _CurrentHolder:
     def ActualColumn(self):
         return self.__Actual(self.column)
 
+    def Next(self, count):
+        if count % self.__side != 0:
+            self.row += 1
+            self.column += 1
+        else:
+            self.startRow += 1
+            self.startColumn -= 1
+            self.row = self.startRow
+            self.column = self.startColumn
+
 class MatrixCalculator:
     @staticmethod
     def __TestResult(matrix, expectedSum, side):
@@ -68,14 +78,8 @@ class MatrixCalculator:
 
         for count in range(1, side * side + 1):
             matrix[current.ActualRow()][current.ActualColumn()] = count
-
-            if count % side != 0:
-                current.row += 1
-                current.column += 1
-            else:
-                current.startRow += 1
-                current.startColumn -= 1
-                current.row = current.startRow
-                current.column = current.startColumn
+            
+            current.Next(count)
+            
 
         return results.MatrixResult(matrix, expectedSum, side, MatrixCalculator.__TestResult(matrix, expectedSum, side))

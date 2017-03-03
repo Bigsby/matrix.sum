@@ -36,6 +36,20 @@ class CurrentHolder
     {
         return Actual(Column);
     }
+
+    void Next(int count)
+    {
+        if (count % _side != 0)
+        {
+            Row++;
+            Column++;
+        }
+        else
+        {
+            Row = ++StartRow;
+            Column = --StartColumn;
+        }
+    }
 };
 
 class MatrixCalculator
@@ -102,16 +116,7 @@ class MatrixCalculator
         {
             matrix[current.ActualRow()][current.ActualColumn()] = count;
 
-            if (count % side != 0)
-            {
-                current.Row++;
-                current.Column++;
-            }
-            else
-            {
-                current.Row = ++current.StartRow;
-                current.Column = --current.StartColumn;
-            }
+            current.Next(count);
         }
 
         return MatrixResult(matrix, expectedSum, side, TestResult(matrix, expectedSum, side));

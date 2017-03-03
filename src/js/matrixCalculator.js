@@ -23,12 +23,23 @@ function currentHolder(row, column, side) {
         return value;
     };
 
-    this.actualRow = function () {
+    me.actualRow = function () {
         return actual(me.row);
     };
 
-    this.actualColumn = function () {
+    me.actualColumn = function () {
         return actual(me.column);
+    };
+
+    me.next = function (count) {
+        if (count % me.side != 0) {
+            me.row++;
+            me.column++;
+        }
+        else {
+            me.row = ++me.startRow;
+            me.column = --me.startColumn;
+        }
     };
 };
 
@@ -37,7 +48,7 @@ function testResult(matrix, expectedSum, side) {
         var sum = 0;
         for (var columnIndex = 0; columnIndex < side; columnIndex++)
             sum += matrix[rowIndex][columnIndex];
-        
+
         if (sum != expectedSum)
             return false;
     }
@@ -46,7 +57,7 @@ function testResult(matrix, expectedSum, side) {
         var sum = 0;
         for (var rowIndex = 0; rowIndex < side; rowIndex++)
             sum += matrix[rowIndex][columnIndex];
-        
+
         if (sum != expectedSum)
             return false;
     }
@@ -77,14 +88,7 @@ module.exports = {
         for (var count = 1; count <= side * side; count++) {
             matrix[current.actualRow()][current.actualColumn()] = count;
 
-            if (count % side != 0) {
-                current.row++;
-                current.column++;
-            }
-            else {
-                current.row = ++current.startRow;
-                current.column = --current.startColumn;
-            }
+            current.next(count);
         }
 
         return new results.matrixResult(matrix, expectedSum, side, testResult(matrix, expectedSum, side));

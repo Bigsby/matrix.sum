@@ -13,6 +13,24 @@ class CurrentHolder{
         $this->side = $side;
     }
 
+    function ActualRow(){
+        return $this->Actual($this->Row);
+    }
+
+    function ActualColumn(){
+        return $this->Actual($this->Column);
+    }
+
+    function Next($count){
+        if ($count % $this->side != 0){
+            $this->Row++;
+            $this->Column++;
+        }else{
+            $this->Row = ++$this->StartRow;
+            $this->Column = --$this->StartColumn;
+        }
+    }
+
     private function Actual($value){
         if ($value < 0){
             return $value + $this->side;
@@ -21,14 +39,6 @@ class CurrentHolder{
             return $value - $this->side;
         }
         return $value;
-    }
-
-    function ActualRow(){
-        return $this->Actual($this->Row);
-    }
-
-    function ActualColumn(){
-        return $this->Actual($this->Column);
     }
 }
 
@@ -86,13 +96,7 @@ class MatrixCalculator{
         for ($count = 1; $count <= $side*$side; $count++) {
             $matrix[$current->ActualRow()][$current->ActualColumn()] = $count;
 
-            if ($count % $side != 0){
-                $current->Row++;
-                $current->Column++;
-            }else{
-                $current->Row = ++$current->StartRow;
-                $current->Column = --$current->StartColumn;
-            }
+            $current->Next($count);
         }
 
         return new MatrixResult($matrix, $expectedSum, $side, MatrixCalculator::TestResult($matrix, $expectedSum, $side));

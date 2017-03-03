@@ -19,13 +19,16 @@ public class MatrixCalculator
         public int StartRow { get; set; }
         public int StartColumn { get; set; }
 
-        private int Actual(int value){
-            if (value < 0)
-                return value + _side;
-            if (value >= _side)
-                return value - _side;
-            
-            return value;
+        public void Next(int count)
+        {
+            if (count % _side != 0) {
+                Row++;
+                Column++;
+            }
+            else {
+                Row = ++StartRow;
+                Column = --StartColumn;
+            }
         }
 
         public int ActualRow()
@@ -36,6 +39,16 @@ public class MatrixCalculator
         public int ActualColumn()
         {
             return Actual(Column);
+        }
+
+        private int Actual(int value)
+        {
+            if (value < 0)
+                return value + _side;
+            if (value >= _side)
+                return value - _side;
+            
+            return value;
         }
     }
 
@@ -84,17 +97,11 @@ public class MatrixCalculator
         var matrix = CreateEmptyMatrix(side);
         var current = new CurrentHolder(-(side - 1) / 2, (int)Math.Floor((double)(side / 2)), side);
 
-        for (var count = 1; count <= side * side; count++) {
+        for (var count = 1; count <= side * side; count++) 
+        {
             matrix[current.ActualRow(), current.ActualColumn()] = count;
 
-            if (count % side != 0) {
-                current.Row++;
-                current.Column++;
-            }
-            else {
-                current.Row = ++current.StartRow;
-                current.Column = --current.StartColumn;
-            }
+            current.Next(count);
         }
 
         return new MatrixResult(matrix, expectedSum, side, true);

@@ -1,4 +1,4 @@
-. "./matrixResult.ps1"
+. "./results.ps1"
 
 class CurrentHolder{
     [int]$Row
@@ -19,6 +19,16 @@ class CurrentHolder{
 
     [int] ActualColumn(){
         return $this.Actual($this.Column)
+    }
+
+    [void] Next([int]$count){
+        if ($count % $this.side -ne 0){
+            $this.Row++
+            $this.Column++
+        }else{
+            $this.Row = ++$this.StartRow
+            $this.Column = --$this.StartColumn
+        }
     }
 
     hidden [int] Actual([int]$value){
@@ -77,20 +87,17 @@ class MatrixCalculator {
     }
 
     [MatrixResult] static Calculate([int]$side){
+        if (($side % 2) -ne 1) {
+            throw [System.Exception] "Side needs to be an odd number."
+        }
         $expectedSum = $side * ($side * $side + 1) / 2
         $matrix = [MatrixCalculator]::CreateEmptyMatrix($side)
         $current = [CurrentHolder]::new(-($side - 1) / 2, ($side - 1)/2, $side)
-
+        Write-Host "$($current.ActualRow()),$($current.ActualColumn())"
         foreach($count in 1..($side*$side)) {
             $matrix[$current.ActualRow(), $current.ActualColumn()] = $count
-
-            if ($count % $side -ne 0){
-                $current.Row++
-                $current.Column++
-            }else{
-                $current.Row = ++$current.StartRow
-                $current.Column = --$current.StartColumn
-            }
+            
+            $current.Next($count)
         }
 
         return [MatrixResult]::new($matrix,$expectedSum, $side, [MatrixCalculator]::TestResult($matrix, $expectedSum, $side));

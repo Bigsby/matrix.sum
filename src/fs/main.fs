@@ -4,12 +4,12 @@ open ConsoleUtil
 open MatrixCalculator
 open results
 
-let parseSideInput input = 
+let private parseSideInput input = 
     if Regex.Match(input, "^[0-9]+$").Success
         then ParseSideSuccess (Int32.Parse input)
         else ParseSideFailure ("Side input not valid!")
 
-let errorOut message =
+let private errorOut message =
     printfn "%s" message
     exit |> ignore
 

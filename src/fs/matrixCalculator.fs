@@ -4,10 +4,10 @@ open System
 open Microsoft.FSharp.Math
 open results
 
-let createEmtpyMatrix side =
+let private createEmtpyMatrix side =
     Array2D.create side side 0
 
-type currentHolder(row, column, side) =
+type private currentHolder(row, column, side) =
     let mutable row = row
     let mutable column = column
     let mutable startRow = row
@@ -34,7 +34,7 @@ type currentHolder(row, column, side) =
             column <- startColumn
         |> ignore
 
-let testResult (matrix:int[,]) expectedSum side =
+let private testResult (matrix:int[,]) expectedSum side =
     let mutable result = true
     let indexEnd = side - 1
     let indexes = [0..indexEnd]

@@ -11,7 +11,7 @@ let parseSideInput input =
 
 let errorOut message =
     printfn "%s" message
-    exit
+    exit |> ignore
 
 [<EntryPoint>]
 let main(args) =
@@ -22,7 +22,7 @@ let main(args) =
         | _ -> args.[0]
 
     match parseSideInput inputSide with
-    | ParseSideFailure errorMessage -> errorOut errorMessage |> ignore
+    | ParseSideFailure errorMessage -> errorOut errorMessage
     | ParseSideSuccess side ->
         try 
             let matrixResult = MatrixCalculator.Calculate side
@@ -30,9 +30,9 @@ let main(args) =
             | MatrixFailure -> printfn "Error calculating matrix!!!"
             | MatrixSuccess (matrix, sum, side) ->
                 printfn "Matrix calculated successfully!"
-                ConsoleUtil.DisplayMatrixResult matrix sum side |> ignore
+                ConsoleUtil.DisplayMatrixResult matrix sum side
         with
-           | _ as ex -> errorOut ex.Message |> ignore 
+           | _ as ex -> errorOut ex.Message
 
     0
 

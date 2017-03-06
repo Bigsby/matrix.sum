@@ -5,9 +5,8 @@ open MatrixCalculator
 open results
 
 let parseSideInput input = 
-    let m = Regex.Match(input, "^[0-9]+$")
-    if m.Success
-        then ParseSideSuccess (System.Int32.Parse input)
+    if Regex.Match(input, "^[0-9]+$").Success
+        then ParseSideSuccess (Int32.Parse input)
         else ParseSideFailure ("Side input not valid!")
 
 let errorOut message =
@@ -22,16 +21,27 @@ let main(args) =
         | 0 -> ConsoleUtil.Prompt "Input side (odd):"
         | _ -> args.[0]
 
-    //let parseResult = parseSideInput inputSide
-
     match parseSideInput inputSide with
     | ParseSideFailure errorMessage -> errorOut errorMessage |> ignore
     | ParseSideSuccess side ->
         try 
-            MatrixCalculator.Calculate side
+            let matrixResult = MatrixCalculator.Calculate side
+            match matrixResult with
+            | MatrixFailure -> printfn "Error calculating matrix!!!"
+            | MatrixSuccess (matrix, sum, side) ->
+                printfn "Matrix calculated successfully!"
+                ConsoleUtil.DisplayMatrixResult matrix sum side |> ignore
         with
            | _ as ex -> errorOut ex.Message |> ignore 
 
     0
 
-// fsc consoleUtil.fs results.fs matrixCalculator.fs main.fs
+(*
+To compile run in Developer Command Prompt:
+> fsc consoleUtil.fs results.fs matrixCalculator.fs main.fs
+
+To execute run in the CLI:
+> main
+or provie the side:
+> main 5
+*)

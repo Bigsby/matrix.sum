@@ -61,7 +61,7 @@ class Program
 }
 
 /*
-To compile run:
+To compile run in Developer Command Prompt:
 > csc *.cs
 
 To execute run in the CLI:

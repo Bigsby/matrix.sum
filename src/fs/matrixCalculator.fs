@@ -1,10 +1,11 @@
 module MatrixCalculator
 
 open System
+open Microsoft.FSharp.Math
 open results
 
 let createEmtpyMatrix side =
-    Array2D.zeroCreate side side
+    Array2D.create side side 0
 
 type currentHolder(row, column, side) =
     let mutable row = row
@@ -24,25 +25,57 @@ type currentHolder(row, column, side) =
     member this.Next count =
         if count % side <> 0
         then
-            row <- row + 1 //|> ignore
-            column <- column + 1 //|> ignore
+            row <- row + 1
+            column <- column + 1
         else
             startRow <- startRow + 1
-            row <- startRow //|> ignore
+            row <- startRow
             startColumn <- startColumn - 1
-            column <- startColumn //|> ignore
+            column <- startColumn
         |> ignore
+
+let testResult (matrix:int[,]) expectedSum side =
+    let mutable result = true
+    let indexEnd = side - 1
+    let indexes = [0..indexEnd]
+    
+    for rowIndex in indexes do
+        if (Array.sum matrix.[rowIndex,0..indexEnd]) <> expectedSum
+        then result <- false
+
+    for columnIndex in indexes do
+        if (Array.sum matrix.[0..indexEnd, columnIndex]) <> expectedSum
+        then result <- false
+
+    let mutable diagonalSum = 0
+    for diagonalIndex in indexes do
+        diagonalSum <- diagonalSum + matrix.[diagonalIndex, diagonalIndex]
+
+    if diagonalSum <> expectedSum
+       then result <- false
+
+    diagonalSum <- 0
+    for diagonalIndex in indexes do
+        diagonalSum <- diagonalSum + matrix.[diagonalIndex, side - diagonalIndex - 1]
+
+    result && (diagonalSum = expectedSum)
+
 
 let Calculate side = 
     if side % 2 = 0
         then raise (Exception("Side needs to be an odd number."))
     
     let expectedSum = side * (side * side + 1) / 2
-    let matrix = createEmtpyMatrix
-    let current = new currentHolder (-(side - 1) / 2,(side - 1)/ 2,side)
+    let matrix = createEmtpyMatrix side
+    let current = new currentHolder (-(side - 1) / 2, (side - 1)/ 2, side)
     
     for count in [1..side*side] do
-        printfn "%i" count
+        matrix.[current.ActualRow, current.ActualColumn] <- count
+        current.Next count
+
+    let result = testResult matrix expectedSum side
     
-    printfn "Side is %i" side
+    if result
+    then MatrixSuccess (matrix, expectedSum, side)
+    else MatrixFailure
 

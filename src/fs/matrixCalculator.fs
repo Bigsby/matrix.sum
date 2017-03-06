@@ -39,26 +39,25 @@ let testResult (matrix:int[,]) expectedSum side =
     let indexEnd = side - 1
     let indexes = [0..indexEnd]
     
-    for rowIndex in indexes do
-        if (Array.sum matrix.[rowIndex,0..indexEnd]) <> expectedSum
-        then result <- false
+    let sums = seq {
+        for rowIndex in indexes do
+            yield Array.sum matrix.[rowIndex,0..indexEnd]
+        
+        for columnIndex in indexes do
+            yield Array.sum matrix.[0..indexEnd, columnIndex]
 
-    for columnIndex in indexes do
-        if (Array.sum matrix.[0..indexEnd, columnIndex]) <> expectedSum
-        then result <- false
+        let mutable diagonalSum = 0
+        for diagonalIndex in indexes do
+            diagonalSum <- diagonalSum + matrix.[diagonalIndex, diagonalIndex]
+        yield diagonalSum
 
-    let mutable diagonalSum = 0
-    for diagonalIndex in indexes do
-        diagonalSum <- diagonalSum + matrix.[diagonalIndex, diagonalIndex]
+        diagonalSum <- 0
+        for diagonalIndex in indexes do
+            diagonalSum <- diagonalSum + matrix.[diagonalIndex, side - diagonalIndex - 1]
+        yield diagonalSum
+    }
 
-    if diagonalSum <> expectedSum
-       then result <- false
-
-    diagonalSum <- 0
-    for diagonalIndex in indexes do
-        diagonalSum <- diagonalSum + matrix.[diagonalIndex, side - diagonalIndex - 1]
-
-    result && (diagonalSum = expectedSum)
+    sums |> Seq.fold (fun test sum -> test && (sum = expectedSum)) true
 
 
 let Calculate side = 

@@ -57,7 +57,7 @@ let private testResult (matrix:int[,]) expectedSum side =
         yield diagonalSum
     }
 
-    sums |> Seq.fold (fun test sum -> test && (sum = expectedSum)) true
+    sums |> Seq.forall (fun sum -> (sum = expectedSum))
 
 
 let Calculate side = 

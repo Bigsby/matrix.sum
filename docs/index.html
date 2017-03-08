@@ -37,7 +37,7 @@
                 <td>6</td>
             </tr>
         </table>
-        <p>And the sum of the numbers on each row column and both diagonals is <b>15</b>.</p>
+        <p>And the sum of the numbers on each row, column and both diagonals is <b>15</b>.</p>
         <p>And, as usual, solving just the problem at hand isn't enough. I embarked in the task of trying to solve the same
             problem for a 5 by 5 square. After a little bit more trial and error than the first time, the solution presented
             itself:
@@ -79,10 +79,10 @@
                 <td>15</td>
             </tr>
         </table>
-        <p>Where the sum of the numbers on each row column and both diagonals is <b>65</b>.</p>
+        <p>Where the sum of the numbers on each row, column and both diagonals is <b>65</b>.</p>
         <p>At this point, I thought it must be likely that all odd-sided squares have a similar solution and, consequently,
-            there must be a generic way to solve this problem for all. And, following that conviction, I started looking
-            for patterns and some stand out with the "naked eye".</p>
+            there must be a generic way to solve this problem for all. Following that conviction, I started looking for patterns
+            and some stand out to the "naked eye".</p>
         <table class="result outline">
             <tr>
                 <td class="highlight_diagonal">4</td>
@@ -144,7 +144,7 @@
                 <b class="highlight_first_last hightlightInText">25</b> in 5x5</li>
             <li>Top-left to bottom-right diagonal is in sequence, having the medium number, in the middle:
                 <ul>
-                    <li><b class="highlight_diagonal hightlightInText">4</b>, <b class="highlight_medium hightlightInText">5</b>                        and <b class="highlight_diagonal hightlightInText">6</b>in 3x3
+                    <li><b class="highlight_diagonal hightlightInText">4</b>, <b class="highlight_medium hightlightInText">5</b>                        and <b class="highlight_diagonal hightlightInText">6</b> in 3x3
                     </li>
                     <li><b class="highlight_diagonal hightlightInText">11</b>, <b class="highlight_diagonal hightlightInText">12</b>,
                         <b class="highlight_medium">13</b>,
@@ -226,8 +226,8 @@
                 <td class="highlight_diagonal">28</td>
             </tr>
         </table>
-        <p>Where the sum of the numbers on each row column and both diagonals is <b>175</b>.</p>
-        <p>Some more scrutiny and some more patterns become evident, like the sequences of numbers in diagonals parallel to
+        <p>Where the sum of the numbers on each row, column and both diagonals is <b>175</b>.</p>
+        <p>Some more scrutiny and some more patterns became evident, like the sequences of numbers in diagonals parallel to
             the middle top-left to bottom-right:</p>
         <table class="result outline">
             <tr>
@@ -360,7 +360,7 @@
                 <td>28</td>
             </tr>
         </table>
-        <p>These got me trying out things like continuing these sequences outside the square it self and, eventually, got here:</p>
+        <p>These got me trying out things like continuing these sequences outside the square itself and, eventually, I got here:</p>
         <table class="result">
             <tr>
                 <td></td>
@@ -756,8 +756,8 @@
                 <td></td>
             </tr>
         </table>
-        <p>It doesn't take lonf from here to realize the numbers go into the square moving the side value, in this case <b>7</b>,
-            into in:</p>
+        <p>It doesn't take long from here to realize the numbers go into the square moving the side value, in this case <b>7</b>,
+            into it:</p>
         <table class="result">
             <tr>
                 <td></td>
@@ -975,9 +975,12 @@
             <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/ps1">PowerShell</a></li>
             <li><a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/php">PHP</a></li>
         </ul>
-        <p>The purpose is to follow the same approach on every language but respecting the "normal" usage each language and
-            its features. The program consists of the following files that represent separate modules (or packages) (.xx
-            is a placeholder for the file extension), and their contents (casing might change, according to language customs):</p>
+        <p>The purpose is to follow the same approach, e.g., same components, on every language but respecting the "normal"
+            usage of each language and its features. The program consists of the following files that represent separate
+            modules (or packages), and their contents:</p>
+        <p>> <cite>.xx is a placeholder for the file extension</cite></p>
+        <p>> <cite>casing might change, according
+            to language customs</cite></p>
         <ul>
             <li>
                 <p><b>main</b>(.xx):</p>
@@ -1033,13 +1036,17 @@
                             all positions) matrix of the given side in both dimentions.</p>
                     </li>
                     <li>
-                        <p><b>CurrentHolder</b> - A (private where available) state definition (class, type) that serves as a helper for matrix calculation.</p>
+                        <p><b>CurrentHolder</b> - A (private where available) state definition (class, type) that serves as
+                            a helper for matrix calculation.</p>
                     </li>
                     <li>
-                        <p><b>Calculate</b> - 'The' function that, receiving the side as parameter, calculates the intended matrix.</p>
+                        <p><b>Calculate</b> - 'The' function that, receiving the side as parameter, calculates the intended
+                            matrix.
+                        </p>
                     </li>
                     <li>
-                        <p><b>TestResult</b> - A (private where available) function that tests if the result matrix is correct, i.e., that the sum of each row, column and both diagonals is equal to the expected sum.</p>
+                        <p><b>TestResult</b> - A (private where available) function that tests if the result matrix is correct,
+                            i.e., that the sum of each row, column and both diagonals is equal to the expected sum.</p>
                     </li>
                 </ul>
             </li>

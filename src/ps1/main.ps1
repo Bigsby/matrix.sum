@@ -47,26 +47,6 @@ function Main ([string[]]$cliargs) {
 
 Main($args)
 
-# $side = 0
-# try {
-#     $side = [convert]::ToInt32($inputSide, 10)
-# }
-# catch {
-#     ErrorOut -message "Side number not valid!"
-# }
-
-# if ($side % 2 -eq 0){
-#     ErrorOut -message "Side needs to be an odd number!"
-# }
-
-# $result = [MatrixCalculator]::Calculate($side)
-# if ($result.Success) {
-#     Write-Host "Matrix calculated successfully!"
-#     [ConsoleUtil]::DisplayMatrixResult($result)
-# } else {
-#     Write-Host "Error calculating matrix!!!"
-# }
-
 <# 
 This is a 
 To execute run in the Powershell:

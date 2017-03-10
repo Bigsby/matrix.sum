@@ -41,18 +41,6 @@ function Main($argc, $argv){
     }else{
         ErrorOut($parseResult->ErrorMessage);
     }
-
-    // $side = 0;
-
-    // if (ctype_digit($inputSide)){
-    //     $side = intval($inputSide);
-    // }else{
-    //     ErrorOut("Side number not valid!");
-    // }
-
-    // if ($side%2==0){
-    //     ErrorOut("Side needs to be an odd number!");
-    // }
 }
 
 Main($argc, $argv);

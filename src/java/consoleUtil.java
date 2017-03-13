@@ -1,4 +1,4 @@
-import results.*;
+import results.matrixResult;
 
 public class consoleUtil {
     public static String Prompt(String question){
@@ -6,7 +6,7 @@ public class consoleUtil {
         return System.console().readLine();
     }
 
-    public static void DisplayMatrixResult(results.matrixResult  result){
+    public static void DisplayMatrixResult(matrixResult  result){
         int[][] matrix = result.getMatrix();
         int length = Math.max(Integer.toString(result.getSide() * result.getSide()).length() + 1, 2);
 

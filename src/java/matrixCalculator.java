@@ -1,6 +1,7 @@
-import results.*;
+import results.matrixResult;
 
 public class matrixCalculator{
+
     private static class CurrentHolder{
         private int row;
         private int column;
@@ -48,7 +49,42 @@ public class matrixCalculator{
         return new int[side][side];
     }
 
-    public static results.matrixResult Calculate(int side) throws Exception {
+    private static boolean TestResult(int[][] matrix, int expectedSum, int side){
+        for (int rowIndex = 0; rowIndex < side; rowIndex++) 
+        {
+            int sum = 0;
+            for (int columnIndex = 0; columnIndex < side; columnIndex++)
+                sum += matrix[rowIndex][columnIndex];
+            
+            if (sum != expectedSum)
+                return false;
+        }
+
+        for (int columnIndex = 0; columnIndex < side; columnIndex++) 
+        {
+            int sum = 0;
+            for (int rowIndex = 0; rowIndex < side; rowIndex++)
+                sum += matrix[rowIndex][columnIndex];
+            
+            if (sum != expectedSum)
+                return false;
+        }
+
+        int diagonalSum = 0;
+        for (int diagonalIndex = 0; diagonalIndex < side; diagonalIndex++)
+            diagonalSum += matrix[diagonalIndex][diagonalIndex];
+
+        if (diagonalSum != expectedSum)
+            return false;
+
+        diagonalSum = 0;
+        for (int diagonalIndex = 0; diagonalIndex < side; diagonalIndex++)
+            diagonalSum += matrix[diagonalIndex][side - diagonalIndex - 1];
+
+        return diagonalSum == expectedSum;
+    }
+
+    public static matrixResult Calculate(int side) throws Exception {
         if (side % 2 != 1)
             throw new Exception("Side needs to be an odd number.");
 
@@ -62,6 +98,6 @@ public class matrixCalculator{
             current.Next(count);
         }
 
-        return new results.matrixResult(matrix, expectedSum, side, true);
+        return new matrixResult(matrix, expectedSum, side, TestResult(matrix, expectedSum, side));
     }
 }

@@ -1,30 +1,61 @@
+use strict;
+use warnings;
 use consoleUtil;
+use results::parseSideResult;
+use matrixCalculator;
 
-sub ErrorOut{
+sub _ParseSideInput {
+    if ($_[0] =~ /^[0-9]+$/){
+        return ParseSideResult->new({ side => $_[0] + 0 });
+    }
+    else{
+        return ParseSideResult->new({ errorMessage => "Side input not valid!" });
+    }
+}
+
+sub _ErrorOut{
     print $_[0];
     exit 0;
 }
-$inputSide = "";
-if (scalar(@ARGV)){
-    $inputSide = @ARGV[0];
-}else{
-    $inputSide = ConsoleUtil::Prompt("Input side (odd):");
+
+sub Main {
+    my $inputSide = "";
+    if (scalar(@ARGV)){
+        $inputSide = $ARGV[0];
+    }else{
+        $inputSide = ConsoleUtil::Prompt("Input side (odd):");
+    }
+
+    my $parseResult = _ParseSideInput($inputSide);
+
+    if ($parseResult->{success}){
+        my $result = eval{
+            MatrixCalculator::Calculate($parseResult->{side});
+        };
+
+        if ($@) {
+            _ErrorOut($@);
+        }
+
+        #"Matrix calculated successfully!" : "Error calculating matrix!!!"
+
+        if ($result->{success}){
+            print "Matrix calculated successfully!\n";
+            ConsoleUtil::DisplayMatrixResult($result);
+        }else{
+            print "Error calculating matrix!!!"
+        }
+
+    }else{
+        _ErrorOut($parseResult->{errorMessage});
+    }
 }
 
-$side = 0;
-if ($inputSide =~ /^[0-9]+$/){
-    $side += $inputSide;
-}else{
-    ErrorOut("Side number not valid!");
-}
+Main();
 
-print $side, "\n";
-
-use matrixResult;
-
-$result = MatrixResult->new(firstname => "B", lastname => "BBB");
-print $result->name, "\n";
-print $result->{firstname}, "\n";
-$result->{lastname} = "other";
-$result->{firstname} = "me";
-print $result->name, "\n";
+=pod
+To execute run in the CLI:
+> perl main.pl
+or provide the side:
+> perl main.pl 7
+=cut

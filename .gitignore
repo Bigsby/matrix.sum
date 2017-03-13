@@ -257,3 +257,6 @@ __pycache__/
 # Compiled executables
 *.exe
 *.dll
+
+# Java compiled files
+*.class

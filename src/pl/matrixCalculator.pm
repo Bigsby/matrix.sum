@@ -55,6 +55,47 @@ sub next{
 
 package MatrixCalculator;
 
+sub _TestResult($){
+    my ($args) = @_;
+    my @matrix = @{$args->{matrix}};
+    my $expectedSum = $args->{expectedSum};
+    my $side = $args->{side};
+
+    for my $rowIndex (0..($side - 1)){
+        my $sum = 0;
+        for my $columnIndex (0..($side - 1)){
+            $sum += $matrix[$rowIndex][$columnIndex];
+        }
+        if ($sum != $expectedSum){
+            return 0;
+        }
+    }
+
+    for my $columnIndex (0..($side - 1)){
+        my $sum = 0;
+        for my $rowIndex (0..($side - 1)){
+            $sum += $matrix[$rowIndex][$columnIndex];
+        }
+        if ($sum != $expectedSum){
+            return 0;
+        }
+    }
+
+    my $diagonalSum = 0;
+    for my $diagonalIndex (0..($side - 1)){
+        $diagonalSum += $matrix[$diagonalIndex][$diagonalIndex];
+    }
+    if ($diagonalSum != $expectedSum){
+        return 0;
+    }
+
+    $diagonalSum = 0;
+    for my $diagonalIndex (0..($side - 1)){
+        $diagonalSum += $matrix[$diagonalIndex][$side - $diagonalIndex - 1];
+    }
+    return $diagonalSum == $expectedSum;
+}
+
 sub Calculate($){
     my $side = $_[0];
 
@@ -82,7 +123,11 @@ sub Calculate($){
         matrix => \@matrix,
         sum => $expectedSum,
         side => $side,
-        success => 1
+        success => _TestResult({
+            matrix => \@matrix,
+            expectedSum => $expectedSum,
+            side => $side
+        })
     });
 }
 

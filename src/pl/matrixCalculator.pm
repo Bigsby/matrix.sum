@@ -60,10 +60,12 @@ sub _TestResult($){
     my @matrix = @{$args->{matrix}};
     my $expectedSum = $args->{expectedSum};
     my $side = $args->{side};
+    
+    my @indexes = (0..($side - 1));
 
-    for my $rowIndex (0..($side - 1)){
+    for my $rowIndex (@indexes){
         my $sum = 0;
-        for my $columnIndex (0..($side - 1)){
+        for my $columnIndex (@indexes){
             $sum += $matrix[$rowIndex][$columnIndex];
         }
         if ($sum != $expectedSum){
@@ -71,7 +73,7 @@ sub _TestResult($){
         }
     }
 
-    for my $columnIndex (0..($side - 1)){
+    for my $columnIndex (@indexes){
         my $sum = 0;
         for my $rowIndex (0..($side - 1)){
             $sum += $matrix[$rowIndex][$columnIndex];
@@ -82,7 +84,7 @@ sub _TestResult($){
     }
 
     my $diagonalSum = 0;
-    for my $diagonalIndex (0..($side - 1)){
+    for my $diagonalIndex (@indexes){
         $diagonalSum += $matrix[$diagonalIndex][$diagonalIndex];
     }
     if ($diagonalSum != $expectedSum){
@@ -90,7 +92,7 @@ sub _TestResult($){
     }
 
     $diagonalSum = 0;
-    for my $diagonalIndex (0..($side - 1)){
+    for my $diagonalIndex (@indexes){
         $diagonalSum += $matrix[$diagonalIndex][$side - $diagonalIndex - 1];
     }
     return $diagonalSum == $expectedSum;

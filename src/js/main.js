@@ -1,26 +1,24 @@
 "use strict";
+const results = require("./results");
 const calculator = require("./matrixCalculator");
 const consoleUtil = require("./consoleUtil");
-const results = require("./results");
-
-let side = 0;
 
 function parseSideInput(inputSide) {
     if (/^[0-9]+$/.test(inputSide))
-        return new results.parseSideResult(parseInt(inputSide));
-    return new results.parseSideResult("Side input not valid!");
+        return new results.ParseSideResult(parseInt(inputSide));
+    return new results.ParseSideResult("Side input not valid!");
 }
 
-function errorOut(message) {
+let errorOut = function(message) {
     console.log(message);
     process.exit();
 }
 
-function handleInput(inputSide) {
+let handleInput = (inputSide) => {
     var parseResult = parseSideInput(inputSide);
     if (parseResult.success) {
         try {
-            var result = calculator.calculate(parseResult.side);
+            var result = calculator(parseResult.side);
 
             console.log(result.success ? "Matrix calculated successfully!" : "Error calculating matrix!!!");
 

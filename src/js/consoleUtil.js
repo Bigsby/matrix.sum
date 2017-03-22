@@ -1,34 +1,34 @@
+"use strict";
 const readline = require("readline");
 
 String.prototype.padLeft = function (length, character) {
     return String(new Array(length + 1).join(character) + this).slice(-length);
 };
 
-module.exports = {
-    prompt: function (question, callback) {
-        var rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
+exports.prompt = (question, callback) => {
+    var rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
 
-        rl.question(question + "\n", function (input) {
-            rl.close();
-            if (callback)
-                callback(input);
-        });
-    },
-    displayMatrixResult: function (result) {
-        var matrix = result.matrix;
-        var length = Math.max(Math.pow(result.side, 2).toString().length + 1, 2);
+    rl.question(question + "\n", function (input) {
+        rl.close();
+        if (callback)
+            callback(input);
+    });
+};
 
-        for (var rowIndex = 0; rowIndex < result.side; rowIndex++) {
-            var rowText = "";
-            for (var columnIndex = 0; columnIndex < result.side; columnIndex++) {
-                rowText += matrix[rowIndex][columnIndex].toString().padLeft(length, " ");
-            }
-            process.stdout.write(rowText + "\n");
+exports.displayMatrixResult = function (result) {
+    var matrix = result.matrix;
+    var length = Math.max(Math.pow(result.side, 2).toString().length + 1, 2);
+
+    for (var rowIndex = 0; rowIndex < result.side; rowIndex++) {
+        var rowText = "";
+        for (var columnIndex = 0; columnIndex < result.side; columnIndex++) {
+            rowText += matrix[rowIndex][columnIndex].toString().padLeft(length, " ");
         }
-
-        console.log("Sum: " + result.sum);
+        process.stdout.write(rowText + "\n");
     }
+
+    console.log("Sum: " + result.sum);
 };

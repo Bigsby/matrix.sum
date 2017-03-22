@@ -1,17 +1,30 @@
+"use strict";
+class BaseResult {
+    constructor(success) {
+        this.success = success;
+    }
+}
+
 module.exports = {
-    parseSideResult: function (value) {
-        if (typeof value === "number") {
-            this.success = true;
-            this.side = value;
-        } else {
-            this.success = false;
-            this.errorMessage = value;
+    ParseSideResult: class ParseSideResult extends BaseResult {
+        constructor(value) {
+            let isNumber = typeof value === "number";
+            super(isNumber);
+            if (isNumber) {
+                this.side = value;
+            } else {
+                this.errorMessage = value;
+            }
         }
     },
-    matrixResult: function (matrix, sum, side, success) {
-        this.matrix = matrix;
-        this.sum = sum;
-        this.side = side;
-        this.success = success;
+
+    MatrixResult: class MatrixResult extends BaseResult {
+        constructor(matrix, sum, side, success) {
+            super(success);
+            this.matrix = matrix;
+            this.sum = sum;
+            this.side = side;
+            this.success = success;
+        }
     }
 }

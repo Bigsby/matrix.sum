@@ -1,4 +1,4 @@
-html, body{
+html, body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -7,18 +7,62 @@ html, body{
     width: 100%;
 }
 
-.header{
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+a, a:visited, a:hover {
+    color: blue;
+}
+
+header {
     background-color: #000010;
     color: #fff;
     text-align: center;
     padding: 2em;
+    cursor: pointer;
+    z-index: 100;
+    flex-grow: 0;
 }
 
-.content {
-    padding: 1.5em;
+@media only screen and (max-width: 767px) {
+    header {
+        padding: 1em;
+    }
+}
+
+    header h1 {
+        margin: 0;
+    }
+
+footer{
+    background-color: #000010;
+    color: #fff;
+    font-size: .5em;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 5px;
+}
+
+    footer .link, .link:visited, .link:hover {
+        color: #fff;
+        overflow-y: auto;
+    }
+
+.content{
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.innerContent{
     max-width: 800px;
     margin: 0 auto;
 }
+
 table.result{
     border-spacing: 0px;
     margin: 25px auto;

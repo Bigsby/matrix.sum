@@ -1,0 +1,54 @@
+table.result {
+    border-spacing: 0px;
+    margin: 25px auto;
+}
+
+table.outline {
+    border: 2px solid black;
+}
+
+table.result td {
+    border: 1px solid black;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+table.result td.top {
+    border-top: 2px solid black;
+}
+
+table.result td.right {
+    border-right: 2px solid black;
+}
+
+table.result td.bottom {
+    border-bottom: 2px solid black;
+}
+
+table.result td.left {
+    border-left: 2px solid black;
+}
+
+table.result td.inSquare {
+    background-color: aliceblue;
+}
+
+.highlight_diagonal {
+    background-color: lightgreen;
+}
+
+.highlight_medium {
+    background-color: lightsalmon;
+}
+
+.highlight_first_last {
+    background-color: lightgray;
+}
+
+.formula {
+    text-align: center;
+}
+
+.hightlightInText {
+    padding: 0 5px;
+}

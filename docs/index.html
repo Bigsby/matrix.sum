@@ -152,7 +152,7 @@
                     <li>Since the top-left to bottom-right diagonal numbers are known and sequential, it's easy to calculate the expected value of the sum of each row, column and both diagonals:
                         <p class="formula"><b>&fnof;(<var>side</var>) = <var>side</var> * (<var>side</var><sup>2</sup> + 1) / 2</b></p>
                         <p>Where <b>(<var>side</var><sup>2</sup> + 1) / 2</b> finds the medium that than, is multiplied by the <b><var>side</var></b>. The differences of the other numbers to the medium are cancelled, e.g., in the 5 by 5 square where the
-                            medium is <b class="highlight_medium hightlightInText">13</b>, <b class="highlight_diagonal hightlightInText">12</b> cancels <b class="highlight_diagonal hightlightInText">14</b> and <b class="highlight_diagonal hightlightInText">11</b>                            cancels <b class="highlight_diagonal hightlightInText">15</b>
+                            medium is <b class="highlight_medium hightlightInText">13</b>, <b class="highlight_diagonal hightlightInText">12</b> cancels <b class="highlight_diagonal hightlightInText">14</b> and <b class="highlight_diagonal hightlightInText">11</b>                            cancels <b class="highlight_diagonal hightlightInText">15</b>.
 
                     </li>
             </ul>
@@ -751,7 +751,7 @@
                     <td></td>
                 </tr>
             </table>
-            <p>It doesn't take long from here to realize the numbers go into the square moving the side value, in this case <b>7</b>, into it:</p>
+            <p>It doesn't take long from here to realize the numbers outside the square go into it moving the side value, in this case <b>7</b>, into it:</p>
             <table class="result">
                 <tr>
                     <td></td>
@@ -1011,7 +1011,7 @@
                             <p><b>ParseSideResult</b> - The result of parsing side input return with either the parsed integer or an error message.</p>
                         </li>
                         <li>
-                            <p><b>MatrixResult</b> - The result of matrix calculation constaining the calculated matrix, the expected sum (of each row, column and both diagonals) and the input side.</p>
+                            <p><b>MatrixResult</b> - The result of matrix calculation containing the calculated matrix, the expected sum (of each row, column and both diagonals) and the input side.</p>
                         </li>
                     </ul>
                 </li>

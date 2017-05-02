@@ -7,9 +7,7 @@ parseSideInput(InputSide) ->
         {match, _} -> 
             {ParsedSide, _} = string:to_integer(InputSide),
             #parseSideResult{success=true,side=ParsedSide};
-            %{success, ParsedSide};
         nomatch ->  #parseSideResult{errorMessage="Side input not valid!"}
-        %{failed, "Side input not valid!"}
     end.
 
 errorOut(Message) ->

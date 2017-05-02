@@ -1,0 +1,2 @@
+-record(parseSideResult,{success=false,side,errorMessage}).
+-record(matrixResult, {matrix, sum, side, success=false}).

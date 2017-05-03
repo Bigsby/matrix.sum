@@ -260,3 +260,7 @@ __pycache__/
 
 # Java compiled files
 *.class
+
+# Erlang compiled files
+*beam
+*.dump

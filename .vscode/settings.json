@@ -3,5 +3,14 @@
     "files.associations": {
         "regex": "cpp",
         "iostream": "cpp"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.beam": true,
+        "**/*.dump": true
     }
 }

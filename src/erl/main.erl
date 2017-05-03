@@ -29,7 +29,9 @@ start() ->
                 Result = matrixCalculator:calculate(ParseSideResult#parseSideResult.side),
                 
                 case Result#matrixResult.success of
-                    true -> consoleUtil:displayMatrixResult(Result);
+                    true -> 
+                        io:fwrite("Matrix calculated successfully!~n"),
+                        consoleUtil:displayMatrixResult(Result);
                     false -> io:fwrite("Error calculating matrix!!!")
                 end 
             catch

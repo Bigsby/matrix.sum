@@ -21,4 +21,6 @@ displayMatrixResult(Result) ->
             io:fwrite(string:right(integer_to_list(getMatrix(RowIndex, ColumnIndex, Matrix)), Length))
         end, lists:seq(0, Side - 1)),
         io:fwrite("~n")
-    end, lists:seq(0, Side - 1)).
+    end, lists:seq(0, Side - 1)),
+
+    io:fwrite("Sum: ~w", [Result#matrixResult.sum]).

@@ -1,0 +1,1 @@
+MatrixResult Calculate(int side);

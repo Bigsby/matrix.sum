@@ -264,3 +264,6 @@ __pycache__/
 # Erlang compiled files
 *beam
 *.dump
+
+# GCC and G++ output files
+src/**/*.out

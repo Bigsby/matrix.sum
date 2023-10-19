@@ -1,6 +1,7 @@
 table.result {
     border-spacing: 0px;
     margin: 25px auto;
+    border-color: gray;
 }
 
 table.outline {
@@ -31,6 +32,7 @@ table.result td.left {
 
 table.result td.inSquare {
     background-color: aliceblue;
+    color: black;
 }
 
 .highlight_diagonal {

@@ -110,7 +110,7 @@ MatrixResult Calculate(int side)
     result.Side = side;
 
     int **matrix = CreateEmptyMatrix(side);
-    CurrentHolder *current;
+    CurrentHolder *current = (CurrentHolder *)malloc(sizeof(CurrentHolder));
     current->Row = current->StartRow = -(side - 1) / 2;
     current->Column = current->StartColumn = (side - 1) / 2;
     current->Side = side;
@@ -121,6 +121,7 @@ MatrixResult Calculate(int side)
 
         Next(current, count);
     }
+    free(current);
 
     result.Matrix = matrix;
     result.Success = TestResult(matrix, expectedSum, side);

@@ -62,7 +62,7 @@ ParseSideResult ParseSideInput(char *inputSide)
 
     sideResult = strtol(inputSide, &endpointer, 10);
     
-    if (*endpointer != 0)
+    if (*endpointer != '\n' && *endpointer != 0)
     {
         result.Success = false;
         strcpy(result.ErrorMessage, "Side input not valid!\n");

@@ -15,10 +15,9 @@ typedef struct
 
 int **CreateEmptyMatrix(int side)
 {
-    int *columns = (int *)calloc(side * side, sizeof(int));
-    int **rows = (int **)calloc(side, sizeof(int *));
+    int **rows = (int **)malloc(side * sizeof(int *));
     for (int i = 0; i < side; i++)
-        rows[i] = columns + i * side;
+        rows[i] = (int *)calloc(side, sizeof(int)); // columns + i * side;
 
     return rows;
 }

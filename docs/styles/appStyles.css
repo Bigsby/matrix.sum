@@ -31,8 +31,8 @@ table.result td.left {
 }
 
 table.result td.inSquare {
-    background-color: aliceblue;
-    color: black;
+    background-color: darkslategrey;
+    color: white;
 }
 
 .highlight_diagonal {

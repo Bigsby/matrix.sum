@@ -15,12 +15,16 @@
     </header>
     <section class="content">
         <section class="innerContent">
-            <p>That I can remember, I've always liked numbers. The ways they behave and relate has always captured my interest.
-                While I was in college, there were always fun mathematical problems to solve running around the corridors
-                and I was one, amongst a bunch of people, who got entertained by trying to solve them. At some point, this
+            <p>That I can remember, I've always liked numbers. The ways they behave and relate has always captured my
+                interest.
+                While I was in college, there were always fun mathematical problems to solve running around the
+                corridors
+                and I was one, amongst a bunch of people, who got entertained by trying to solve them. At some point,
+                this
                 simple problem showed up:</p>
             <p>
-                <b>Fill a 3 by 3 square with the numbers from 1 to 9 so that the sum of the numbers on each row, column and
+                <b>Fill a 3 by 3 square with the numbers from 1 to 9 so that the sum of the numbers on each row, column
+                    and
                     both diagonals are the same.</b>
             </p>
             <p>
@@ -44,9 +48,12 @@
                 </tr>
             </table>
             <p>And the sum of the numbers on each row, column and both diagonals is
-                <b>15</b>.</p>
-            <p>And, as usual, solving just the problem at hand isn't enough. I embarked in the task of trying to solve the same
-                problem for a 5 by 5 square. After a little bit more trial and error than the first time, the solution presented
+                <b>15</b>.
+            </p>
+            <p>And, as usual, solving just the problem at hand isn't enough. I embarked in the task of trying to solve
+                the same
+                problem for a 5 by 5 square. After a little bit more trial and error than the first time, the solution
+                presented
                 itself:
             </p>
             <table class="result outline">
@@ -87,9 +94,12 @@
                 </tr>
             </table>
             <p>Where the sum of the numbers on each row, column and both diagonals is
-                <b>65</b>.</p>
-            <p>At this point, I thought it must be likely that all odd-sided squares have a similar solution and, consequently,
-                there must be a generic way to solve this problem for all. Following that conviction, I started looking for
+                <b>65</b>.
+            </p>
+            <p>At this point, I thought it must be likely that all odd-sided squares have a similar solution and,
+                consequently,
+                there must be a generic way to solve this problem for all. Following that conviction, I started looking
+                for
                 patterns and some stand out to the "naked eye".</p>
             <table class="result outline">
                 <tr>
@@ -148,13 +158,15 @@
             <ul>
                 <li>In the middle of the square goes the medium (the middle number):
                     <b class="highlight_medium hightlightInText">5</b> in 3x3;
-                    <b class="highlight_medium hightlightInText">13</b> in 5x5</li>
+                    <b class="highlight_medium hightlightInText">13</b> in 5x5
+                </li>
                 <li>Bellow the medium number goes the first number, i.e.,
                     <b class="highlight_first_last hightlightInText">1</b>
                 </li>
                 <li>Over the medium number goes the last number:
                     <b class="highlight_first_last hightlightInText">9</b> in 3x3;
-                    <b class="highlight_first_last hightlightInText">25</b> in 5x5</li>
+                    <b class="highlight_first_last hightlightInText">25</b> in 5x5
+                </li>
                 <li>Top-left to bottom-right diagonal is in sequence, having the medium number, in the middle:
                     <ul>
                         <li>
@@ -169,31 +181,32 @@
                             <b class="highlight_diagonal hightlightInText">14</b> and
                             <b class="highlight_diagonal hightlightInText">15</b> in 5x5
                     </ul>
-                    </li>
-                    <li>Since the top-left to bottom-right diagonal numbers are known and sequential, it's easy to calculate
-                        the expected value of the sum of each row, column and both diagonals:
-                        <p class="formula">
-                            <b>&fnof;(
-                                <var>side</var>) =
-                                <var>side</var> * (
-                                <var>side</var>
-                                <sup>2</sup> + 1) / 2</b>
-                        </p>
-                        <p>Where
-                            <b>(
-                                <var>side</var>
-                                <sup>2</sup> + 1) / 2</b> finds the medium that then, is multiplied by the
-                            <b>
-                                <var>side</var>
-                            </b>. The differences of the other numbers to the medium are cancelled, e.g., in the 5 by 5 square
-                            where the medium is
-                            <b class="highlight_medium hightlightInText">13</b>,
-                            <b class="highlight_diagonal hightlightInText">12</b> cancels
-                            <b class="highlight_diagonal hightlightInText">14</b> and
-                            <b class="highlight_diagonal hightlightInText">11</b> cancels
-                            <b class="highlight_diagonal hightlightInText">15</b>.
+                </li>
+                <li>Since the top-left to bottom-right diagonal numbers are known and sequential, it's easy to calculate
+                    the expected value of the sum of each row, column and both diagonals:
+                    <p class="formula">
+                        <b>&fnof;(
+                            <var>side</var>) =
+                            <var>side</var> * (
+                            <var>side</var>
+                            <sup>2</sup> + 1) / 2</b>
+                    </p>
+                    <p>Where
+                        <b>(
+                            <var>side</var>
+                            <sup>2</sup> + 1) / 2</b> finds the medium that then, is multiplied by the
+                        <b>
+                            <var>side</var>
+                        </b>. The differences of the other numbers to the medium are cancelled, e.g., in the 5 by 5
+                        square
+                        where the medium is
+                        <b class="highlight_medium hightlightInText">13</b>,
+                        <b class="highlight_diagonal hightlightInText">12</b> cancels
+                        <b class="highlight_diagonal hightlightInText">14</b> and
+                        <b class="highlight_diagonal hightlightInText">11</b> cancels
+                        <b class="highlight_diagonal hightlightInText">15</b>.
 
-                    </li>
+                </li>
             </ul>
             <p>Having this starting point, I took the task of solving the 7 by 7 square.</p>
             <table class="result outline">
@@ -262,8 +275,10 @@
                 </tr>
             </table>
             <p>Where the sum of the numbers on each row, column and both diagonals is
-                <b>175</b>.</p>
-            <p>Some more scrutiny and some more patterns became evident, like the sequences of numbers in diagonals parallel
+                <b>175</b>.
+            </p>
+            <p>Some more scrutiny and some more patterns became evident, like the sequences of numbers in diagonals
+                parallel
                 to the middle top-left to bottom-right:</p>
             <table class="result outline">
                 <tr>
@@ -331,7 +346,8 @@
                 </tr>
             </table>
             <p>Or the gap of the size of the side, in this case
-                <b>7</b>, on the diagonals of the opposite direction:</p>
+                <b>7</b>, on the diagonals of the opposite direction:
+            </p>
             <table class="result outline">
                 <tr>
                     <td>22</td>
@@ -397,7 +413,8 @@
                     <td>28</td>
                 </tr>
             </table>
-            <p>These got me trying out things like continuing these sequences outside the square itself and, eventually, I got
+            <p>These got me trying out things like continuing these sequences outside the square itself and, eventually,
+                I got
                 here:</p>
             <table class="result">
                 <tr>
@@ -794,9 +811,11 @@
                     <td></td>
                 </tr>
             </table>
-            <p>It doesn't take long from here to realize the numbers outside the square go into it moving the side value, in
+            <p>It doesn't take long from here to realize the numbers outside the square go into it moving the side
+                value, in
                 this case
-                <b>7</b>, into it:</p>
+                <b>7</b>, into it:
+            </p>
             <table class="result">
                 <tr>
                     <td></td>
@@ -899,7 +918,7 @@
                     <td class="highlight_first_last">43</td>
                     <td class="inSquare">19</td>
                     <td class="right inSquare"></td>
-                    <td class="inSquare">13</td>
+                    <td>13</td>
                     <td></td>
                     <td>7</td>
                 </tr>
@@ -996,15 +1015,18 @@
             </table>
             <p>And that's all there is to it.</p>
             <p>I think, the largest side value I tested on paper, in my college days, was
-                <b>19</b>. Mostly, because it's not easy to find squared paper with such a big matrix. But I'm pretty confident
+                <b>19</b>. Mostly, because it's not easy to find squared paper with such a big matrix. But I'm pretty
+                confident
                 this method works for every odd-sided square.
             </p>
             <h2>As a computer program</h2>
-            <p>Since then, I've started working as a software developer and I always had the goal of, one day, implementing this
+            <p>Since then, I've started working as a software developer and I always had the goal of, one day,
+                implementing this
                 method as a computer program. Recently, I started
-                <a target="_blank" href="http://langs.bigsbyspot.org">exploring various programming languages</a> and decided this was the time. The code lives
-                <a target="_blank"
-                    href="https://github.com/Bigsby/matrix.sum">here</a>. Or in each language:</p>
+                <a target="_blank" href="http://langs.bigsbyspot.org">exploring various programming languages</a> and
+                decided this was the time. The code lives
+                <a target="_blank" href="https://github.com/Bigsby/matrix.sum">here</a>. Or in each language:
+            </p>
             <ul>
                 <li>
                     <a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/js">JavaScript</a>
@@ -1052,8 +1074,10 @@
                     <a target="_blank" href="https://github.com/Bigsby/matrix.sum/tree/master/src/erl">Erlang</a>
                 </li>
             </ul>
-            <p>The purpose is to follow the same approach, e.g., same components, on every language but respecting the "normal"
-                usage of each language and its features. The program consists of the following files that represent separate
+            <p>The purpose is to follow the same approach, e.g., same components, on every language but respecting the
+                "normal"
+                usage of each language and its features. The program consists of the following files that represent
+                separate
                 modules (or packages), and their contents:</p>
             <p>>
                 <cite>.xx is a placeholder for the file extension</cite>
@@ -1064,13 +1088,16 @@
             <ul>
                 <li>
                     <p>
-                        <b>main</b>(.xx):</p>
+                        <b>main</b>(.xx):
+                    </p>
                     <ul>
                         <li>
                             <p>
-                                <b>Main</b> - Program entry point, i.e., where the program starts:</p>
+                                <b>Main</b> - Program entry point, i.e., where the program starts:
+                            </p>
                             <ol>
-                                <li>Detects if there are command line arguments that provide matrix side and, if not, calls for
+                                <li>Detects if there are command line arguments that provide matrix side and, if not,
+                                    calls for
                                     user input to be requested</li>
                                 <li>Calls for matrix calculation</li>
                                 <li>Calls for matrix display</li>
@@ -1078,71 +1105,93 @@
                         </li>
                         <li>
                             <p>
-                                <b>ParseSideInput</b> - function that uses a regular expression to check if input is just digits
-                                and, if so, parses the input to an integer.</p>
+                                <b>ParseSideInput</b> - function that uses a regular expression to check if input is
+                                just digits
+                                and, if so, parses the input to an integer.
+                            </p>
                         </li>
                         <li>
                             <p>
-                                <b>ErrorOut</b> - function that displays an error message and exits program.</p>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <p>
-                        <b>consoleUtil</b>(.xx) - Helper module containing:</p>
-                    <ul>
-                        <li>
-                            <p>
-                                <b>Prompt</b> - function that receives a question to ask the user and returns the user input.</p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>DisplayMatrixResult</b> - function that receives the calculated matrix and displays it calculating
-                                paddings so that columns are aligned.</p>
+                                <b>ErrorOut</b> - function that displays an error message and exits program.
+                            </p>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <p>
-                        <b>results</b>(.xx) - Contains result object definitions:</p>
+                        <b>consoleUtil</b>(.xx) - Helper module containing:
+                    </p>
                     <ul>
                         <li>
                             <p>
-                                <b>ParseSideResult</b> - The result of parsing side input return with either the parsed integer
-                                or an error message.</p>
+                                <b>Prompt</b> - function that receives a question to ask the user and returns the user
+                                input.
+                            </p>
                         </li>
                         <li>
                             <p>
-                                <b>MatrixResult</b> - The result of matrix calculation containing the calculated matrix, the
-                                expected sum (of each row, column and both diagonals) and the input side.</p>
+                                <b>DisplayMatrixResult</b> - function that receives the calculated matrix and displays
+                                it calculating
+                                paddings so that columns are aligned.
+                            </p>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <p>
-                        <b>matrixCalculator</b>(.xx) - The module where the matrix calculation is made, containing:</p>
+                        <b>results</b>(.xx) - Contains result object definitions:
+                    </p>
                     <ul>
                         <li>
                             <p>
-                                <b>CreateEmtpyMatrix</b> - A (private where available) function that creates an empty (with
-                                0 in all positions) matrix of the given side in both dimentions.</p>
+                                <b>ParseSideResult</b> - The result of parsing side input return with either the parsed
+                                integer
+                                or an error message.
+                            </p>
                         </li>
                         <li>
                             <p>
-                                <b>CurrentHolder</b> - A (private where available) state definition (class, type) that serves
-                                as a helper for matrix calculation.</p>
+                                <b>MatrixResult</b> - The result of matrix calculation containing the calculated matrix,
+                                the
+                                expected sum (of each row, column and both diagonals) and the input side.
+                            </p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p>
+                        <b>matrixCalculator</b>(.xx) - The module where the matrix calculation is made, containing:
+                    </p>
+                    <ul>
+                        <li>
+                            <p>
+                                <b>CreateEmtpyMatrix</b> - A (private where available) function that creates an empty
+                                (with
+                                0 in all positions) matrix of the given side in both dimentions.
+                            </p>
                         </li>
                         <li>
                             <p>
-                                <b>Calculate</b> - 'The' function that, receiving the side as parameter, calculates the intended
+                                <b>CurrentHolder</b> - A (private where available) state definition (class, type) that
+                                serves
+                                as a helper for matrix calculation.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <b>Calculate</b> - 'The' function that, receiving the side as parameter, calculates the
+                                intended
                                 matrix.
                             </p>
                         </li>
                         <li>
                             <p>
-                                <b>TestResult</b> - A (private where available) function that tests if the result matrix is
-                                correct, i.e., that the sum of each row, column and both diagonals is equal to the expected
-                                sum.</p>
+                                <b>TestResult</b> - A (private where available) function that tests if the result matrix
+                                is
+                                correct, i.e., that the sum of each row, column and both diagonals is equal to the
+                                expected
+                                sum.
+                            </p>
                         </li>
                     </ul>
                 </li>

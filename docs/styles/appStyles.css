@@ -36,15 +36,15 @@ table.result td.inSquare {
 }
 
 .highlight_diagonal {
-    background-color: lightgreen;
+    background-color: green;
 }
 
 .highlight_medium {
-    background-color: lightsalmon;
+    background-color: salmon;
 }
 
 .highlight_first_last {
-    background-color: lightgray;
+    background-color: darkgray;
 }
 
 .formula {

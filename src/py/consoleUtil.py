@@ -1,8 +1,10 @@
 class ConsoleUtil:
-    def Prompt(question):
+    @staticmethod
+    def Prompt(question: str) -> str:
         return input(question + "\n")
 
-    def DisplayMatrixResult(result):
+    @staticmethod
+    def DisplayMatrixResult(result) -> None:
         matrix = result.matrix
         length = max(len(str(result.side * result.side)) + 1, 2)
 

@@ -5,17 +5,17 @@ from consoleUtil import ConsoleUtil
 import results
 from matrixCalculator import MatrixCalculator
 
-def ParseSideInput(inputSide):
+def ParseSideInput(inputSide: str) -> results.ParseSideResult:
     if re.compile("^[0-9]+$").match(inputSide):
         return results.ParseSideResult(int(inputSide))
     else:
         return results.ParseSideResult("Side input not valid!")
 
-def ErroOut(message):
+def ErroOut(message) -> None:
     print(message)
     sys.exit()
 
-def Main():
+def Main() -> None:
     inputSide = ""
     if len(sys.argv) == 1:
         inputSide = ConsoleUtil.Prompt("Input side (odd):")

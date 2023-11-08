@@ -42,10 +42,3 @@ start() ->
 
     erlang:halt().
 
-% To compile run in the CLI:
-% > erl -compile consoleUtil matrixCalculator main
-
-% To execute run in the CLI:
-% > erl -noshell -run main
-% or provie the side:
-% > erl -noshell -run main -- 5

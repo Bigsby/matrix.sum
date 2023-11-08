@@ -45,10 +45,4 @@ function Main($argc, $argv){
 
 Main($argc, $argv);
 
-/*
-To execute run in the CLI:
-> php main.php
-or provide the side:
-> php main.php 7
-*/
 ?>

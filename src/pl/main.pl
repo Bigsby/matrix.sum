@@ -53,9 +53,3 @@ sub Main {
 
 Main();
 
-=pod
-To execute run in the CLI:
-> perl main.pl
-or provide the side:
-> perl main.pl 7
-=cut

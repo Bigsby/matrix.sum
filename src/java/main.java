@@ -44,12 +44,4 @@ public class main {
 
 }
 
-/*
-To compile run in the CLI:
-> javac .\*.java .\results\*.java
 
-To execute run in the CLI:
-> java main
-or provie the side:
-> java main 5
-*/

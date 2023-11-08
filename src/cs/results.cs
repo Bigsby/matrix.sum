@@ -5,6 +5,7 @@ namespace Results
         private ParseSideResult(bool success)
         {
             Success = success;
+            ErrorMessage = string.Empty;
         }
 
         public ParseSideResult(int side) : this(true)

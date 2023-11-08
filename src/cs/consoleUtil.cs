@@ -3,7 +3,7 @@ using static System.Console;
 
 public static class ConsoleUtil 
 {
-    public static string Prompt(string question)
+    public static string? Prompt(string question)
     {
         WriteLine(question);
         return ReadLine();

@@ -31,7 +31,7 @@ class Program
         else
             inputSide = args[0];
 
-        var parseResult = ParseSideInput(inputSide);
+        var parseResult = ParseSideInput(inputSide ?? "");
 
         if (parseResult.Success)
         {

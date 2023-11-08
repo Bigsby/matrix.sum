@@ -5,9 +5,9 @@ import "regexp"
 import "fmt"
 import "strconv"
 
-import console_util "./consoleUtil"
-import results "./results"
-import matrix_calculator "./matrixCalculator"
+import "matrix/results"
+import "matrix/consoleUtil"
+import "matrix/matrixCalculator"
 
 func parseSideInput(inputSide string) *results.ParseSideResult {
 	matched, err := regexp.MatchString("^[0-9]+$", inputSide)
@@ -31,12 +31,12 @@ func main() {
 	if len(args) == 1 {
 		inputSide = args[0]
 	} else {
-		inputSide = console_util.Prompt("Input side (odd):")
+		inputSide = consoleUtil.Prompt("Input side (odd):")
 	}
 
 	parseResult := parseSideInput(inputSide)
 	if parseResult.Success {
-		result, err := matrix_calculator.Calculate(parseResult.Side)
+		result, err := matrixCalculator.Calculate(parseResult.Side)
 
 		if err != nil {
 			errorOut(err.Error())
@@ -48,7 +48,7 @@ func main() {
 			fmt.Println("Error calculating matrix!!!")
 		}
 
-		console_util.DisplayMatrixResult(result)
+		consoleUtil.DisplayMatrixResult(result)
 	} else {
 		errorOut(parseResult.ErrorMessage)
 	}

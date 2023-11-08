@@ -4,7 +4,7 @@ import (
 	"errors"
 )
 
-import results "../results"
+import "matrix/results"
 
 func createEmptyMatrix(side int) [][]int {
 	result := [][]int{}

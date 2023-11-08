@@ -6,8 +6,7 @@ import (
 	"os"
 )
 
-import results "../results"
-
+import "matrix/results"
 // Prompt asks user a question
 func Prompt(question string) string {
 	fmt.Println(question)

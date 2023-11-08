@@ -44,10 +44,3 @@ Public Module Program
     End Sub
 End Module
 
-' To compile run in Developer Command Prompt:
-' > vbc main.vb results.vb consoleUtil.vb matrixCalculator.vb
-
-' To execute run in the CLI:
-' > main
-' or provie the side:
-' > main 5

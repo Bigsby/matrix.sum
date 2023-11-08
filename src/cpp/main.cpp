@@ -1,30 +1,26 @@
-#include <iostream>
-#include <string>
-#include <regex>
 #include "consoleUtil.cpp"
-#include "results.cpp"
 #include "matrixCalculator.cpp"
+#include "results.hpp"
+#include <iostream>
+#include <regex>
+#include <string>
 
 using namespace std;
 using namespace results;
 
-ParseSideResult ParseSideInput(string inputSide)
-{
-  if (regex_match(inputSide, regex("^[0-9]+$")))
-  {
+ParseSideResult ParseSideInput(string inputSide) {
+  if (regex_match(inputSide, regex("^[0-9]+$"))) {
     return ParseSideResult(stoi(inputSide));
   }
   return ParseSideResult("Side input not valid!");
 }
 
-void ErrorOut(string message)
-{
+void ErrorOut(string message) {
   cout << message;
   exit(0);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   string inputSide;
   if (argc == 1)
     inputSide = ConsoleUtil::Prompt("Input side (odd):");
@@ -33,24 +29,20 @@ int main(int argc, char *argv[])
 
   ParseSideResult parseResult = ParseSideInput(inputSide);
 
-  if (parseResult.Success)
-  {
-    try
-    {
+  if (parseResult.Success) {
+    try {
 
       MatrixResult result = MatrixCalculator::Calculate(parseResult.Side);
 
-      cout << (result.Success ? "Matrix calculated successfully!" : "Error calculating matrix!!!") << endl;
+      cout << (result.Success ? "Matrix calculated successfully!"
+                              : "Error calculating matrix!!!")
+           << endl;
 
       ConsoleUtil::DisplayMatrixResult(result);
-    }
-    catch (exception &ex)
-    {
+    } catch (exception &ex) {
       ErrorOut(ex.what());
     }
-  }
-  else
-  {
+  } else {
     ErrorOut(parseResult.ErrorMessage);
   }
 
